@@ -1,7 +1,7 @@
 package dev.jedcua.controller;
 
-import dev.jedcua.Main;
 import dev.jedcua.Module;
+import dev.jedcua.StageManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -12,6 +12,6 @@ public final class WelcomeController {
 
     @FXML
     public void openInventory(final ActionEvent event) {
-        Main.loadModule(Module.INVENTORY);
+        StageManager.getInstance().loadModule(Module.INVENTORY);
     }
 }

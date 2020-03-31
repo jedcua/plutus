@@ -1,48 +1,23 @@
 package dev.jedcua;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-import jfxtras.styles.jmetro.JMetro;
-import jfxtras.styles.jmetro.Style;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
 
-import java.io.IOException;
-import java.util.Objects;
-
-public class Main extends Application {
-    private static Stage stage;
+public final class Main extends Application {
+    private static final Logger LOGGER = Logger.getLogger(Main.class);
+    private static final int WIDTH = 800;
+    private static final int HEIGHT = 600;
 
     @Override
     public void start(final Stage stage) {
-        Main.stage = stage;
-        Main.stage.setWidth(800);
-        Main.stage.setHeight(600);
-        Main.loadModule(Module.WELCOME);
-    }
+        // Setup logger
+        BasicConfigurator.configure();
+        LOGGER.info("Starting Plutus");
 
-    public static void loadModule(final Module module) {
-        final Parent root;
-        try {
-            root = FXMLLoader.load(
-                Objects.requireNonNull(
-                    Main.class
-                        .getClassLoader()
-                        .getResource(module.getFilename())
-                )
-            );
-            final Scene scene = new Scene(root);
-
-            final JMetro jMetro = new JMetro(Style.LIGHT);
-            jMetro.setAutomaticallyColorPanes(true);
-            jMetro.setScene(scene);
-
-            Main.stage.setScene(scene);
-            Main.stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        StageManager.initialize(stage, WIDTH, HEIGHT);
+        StageManager.getInstance().loadModule(Module.WELCOME);
     }
 
     public static void main(final String... args) {

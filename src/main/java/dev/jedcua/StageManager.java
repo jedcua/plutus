@@ -6,14 +6,15 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import jfxtras.styles.jmetro.JMetro;
 import jfxtras.styles.jmetro.Style;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public final class StageManager {
     private static StageManager instance;
-    private static final Logger LOGGER = Logger.getLogger(StageManager.class);
+    private static final Logger LOGGER = LogManager.getLogger(StageManager.class);
     private Stage stage;
 
     private StageManager(final Stage stage) {

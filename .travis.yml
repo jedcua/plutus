@@ -10,5 +10,7 @@ before_script:
   - sleep 5
 script:
   - mvn clean
-  - mvn verify jacoco:report coveralls:report
+  - mvn verify
   - mvn compile javafx:jlink
+after_success:
+  - mvn jacoco:report coveralls:report

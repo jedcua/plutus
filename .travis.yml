@@ -10,5 +10,5 @@ before_script:
   - sleep 5
 script:
   - mvn clean
-  - mvn verify
+  - mvn verify coveralls:report
   - mvn compile javafx:jlink

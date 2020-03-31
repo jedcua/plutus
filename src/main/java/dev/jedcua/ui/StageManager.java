@@ -1,5 +1,7 @@
-package dev.jedcua;
+package dev.jedcua.ui;
 
+import dev.jedcua.Main;
+import dev.jedcua.model.Module;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -32,6 +34,10 @@ public final class StageManager {
             throw new IllegalStateException("Singleton is null!");
         }
         return instance;
+    }
+
+    public static void destroy() {
+        instance = null;
     }
 
     public void loadModule(final Module module) {

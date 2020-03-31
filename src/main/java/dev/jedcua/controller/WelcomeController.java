@@ -1,7 +1,7 @@
 package dev.jedcua.controller;
 
-import dev.jedcua.Module;
-import dev.jedcua.StageManager;
+import dev.jedcua.model.Module;
+import dev.jedcua.ui.StageManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 

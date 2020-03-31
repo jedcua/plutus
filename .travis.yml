@@ -4,4 +4,6 @@ jdk:
   - openjdk11
 
 script:
-  - mvn clean compile javafx:jlink
+  - mvn clean
+  - mvn verify
+  - mvn compile javafx:jlink

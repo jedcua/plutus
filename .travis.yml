@@ -1,7 +1,16 @@
 language: java
-
+dist: xenial
+services:
+  - xvfb
 jdk:
   - openjdk11
-
+before_script:
+  - Xvfb :99 &>/dev/null &
+  - export DISPLAY=:99
+  - sleep 5
 script:
-  - mvn clean compile javafx:jlink
+  - mvn clean
+  - mvn verify
+  - mvn compile javafx:jlink
+after_success:
+  - mvn jacoco:report coveralls:report

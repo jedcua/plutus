@@ -191,7 +191,9 @@
                     <argLine>
                         @{argLine}
                         --add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
+                        --add-opens dev.jedcua.plutus/dev.jedcua=ALL-UNNAMED
                         --add-opens dev.jedcua.plutus/dev.jedcua.ui=ALL-UNNAMED
+                        --add-opens dev.jedcua.plutus/dev.jedcua.controller=ALL-UNNAMED
                     </argLine>
                 </configuration>
             </plugin>
@@ -234,7 +236,7 @@
                                         <limit>
                                             <counter>LINE</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0%</minimum>
+                                            <minimum>75%</minimum>
                                         </limit>
                                     </limits>
                                 </rule>

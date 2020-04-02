@@ -1,6 +1,6 @@
 package dev.jedcua;
 
-import dev.jedcua.model.Module;
+import dev.jedcua.ui.Module;
 import dev.jedcua.ui.StageManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -16,8 +16,14 @@ public final class Main extends Application {
     public void start(final Stage stage) {
         LOGGER.info("Starting Plutus");
 
-        StageManager.initialize(stage, WIDTH, HEIGHT);
-        StageManager.getInstance().loadModule(Module.STORE_LIST);
+        DependencyManager
+            .initialize()
+            .register(new StageManager(stage, WIDTH, HEIGHT));
+
+        DependencyManager
+            .getInstance()
+            .fetch(StageManager.class)
+            .loadModule(Module.STORE_LIST);
     }
 
     public static void main(final String... args) {

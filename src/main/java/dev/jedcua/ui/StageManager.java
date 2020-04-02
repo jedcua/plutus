@@ -1,7 +1,6 @@
 package dev.jedcua.ui;
 
 import dev.jedcua.Main;
-import dev.jedcua.model.Module;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,29 +11,13 @@ import org.apache.logging.log4j.Logger;
 import java.util.Objects;
 
 public final class StageManager {
-    private static StageManager instance;
     private static final Logger LOGGER = LogManager.getLogger(StageManager.class);
     private Stage stage;
 
-    private StageManager(final Stage stage) {
+    public StageManager(final Stage stage, final Integer width, final Integer height) {
         this.stage = stage;
-    }
-
-    public static void initialize(final Stage stage, final Integer width, final Integer height) {
         stage.setWidth(width);
         stage.setHeight(height);
-        instance = new StageManager(stage);
-    }
-
-    public static StageManager getInstance() {
-        if (instance == null) {
-            throw new IllegalStateException("Singleton is null!");
-        }
-        return instance;
-    }
-
-    public static void destroy() {
-        instance = null;
     }
 
     public void loadModule(final Module module) {

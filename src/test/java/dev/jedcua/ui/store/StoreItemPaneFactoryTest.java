@@ -1,7 +1,8 @@
 package dev.jedcua.ui.store;
 
+import dev.jedcua.DependencyManager;
 import dev.jedcua.Main;
-import dev.jedcua.model.Module;
+import dev.jedcua.ui.Module;
 import dev.jedcua.model.Store;
 import dev.jedcua.ui.StageManager;
 import javafx.scene.control.Label;
@@ -11,6 +12,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.framework.junit5.ApplicationExtension;
@@ -28,14 +30,20 @@ public class StoreItemPaneFactoryTest {
         this.stage = stage;
     }
 
+    @BeforeEach
+    public void beforeEach() {
+        DependencyManager
+            .initialize()
+            .register(new StageManager(stage, 100, 100));
+    }
+
     @AfterEach
     public void afterAll() {
-        StageManager.destroy();
+        DependencyManager.destroy();
     }
 
     @Test
     public void build() {
-        StageManager.initialize(this.stage, 100, 100);
         final URL url = Main.class.getClassLoader().getResource(Module.STORE_ITEM.getFilename());
         final Store store = new Store(1L, "StoreName", "StoreAddress", "StoreTin");
         MatcherAssert.assertThat(

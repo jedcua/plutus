@@ -5,6 +5,7 @@ module dev.jedcua.plutus {
     requires javafx.fxml;
     requires org.apache.logging.log4j;
     requires org.jdbi.v3.core;
+    requires org.jdbi.v3.sqlobject;
 
     exports dev.jedcua.controller;
     exports dev.jedcua.config;

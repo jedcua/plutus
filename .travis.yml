@@ -2,14 +2,23 @@ language: java
 dist: xenial
 services:
   - xvfb
+  - mysql
 jdk:
   - openjdk11
+before_install:
+  - mysql -e 'CREATE DATABASE plutus;'
+  - mysql -e 'CREATE USER plutus IDENTIFIED BY \'plutus\';'
+  - mysql -e 'GRANT ALL PRIVILEGES ON plutus.* TO plutus;'
 before_script:
   - Xvfb :99 &>/dev/null &
   - export DISPLAY=:99
   - sleep 5
+  - export PLUTUS_DB_URL='jdbc:mysql://localhost:3306/plutus?useSSL=false'
+  - export PLUTUS_DB_USERNAME='plutus'
+  - export PLUTUS_DB_PASSWORD='plutus'
 script:
   - mvn clean
+  - mvn flyway:migrate
   - mvn verify
   - mvn compile javafx:jlink
 after_success:

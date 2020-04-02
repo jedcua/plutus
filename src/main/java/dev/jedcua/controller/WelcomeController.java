@@ -7,15 +7,22 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public final class WelcomeController {
+    private final StageManager stageManager;
+
+    public WelcomeController(final StageManager stageManager) {
+        this.stageManager = stageManager;
+    }
+
     public WelcomeController() {
-        // Do nothing for now
+        this(
+            DependencyManager
+                .getInstance()
+                .fetch(StageManager.class)
+        );
     }
 
     @FXML
     public void openStores(final ActionEvent event) {
-        DependencyManager
-            .getInstance()
-            .fetch(StageManager.class)
-            .loadModule(Module.STORE_LIST);
+        this.stageManager.loadModule(Module.STORE_LIST);
     }
 }

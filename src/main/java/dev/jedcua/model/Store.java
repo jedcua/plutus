@@ -1,5 +1,8 @@
 package dev.jedcua.model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public final class Store {
     private final Long id;
     private final String name;
@@ -27,5 +30,14 @@ public final class Store {
 
     public String getTin() {
         return tin;
+    }
+
+    public static Store fromResultSet(final ResultSet rs) throws SQLException {
+        return new Store(
+            rs.getLong("id"),
+            rs.getString("name"),
+            rs.getString("address"),
+            rs.getString("tin")
+        );
     }
 }

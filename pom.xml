@@ -16,6 +16,10 @@
         <javafx.version>14</javafx.version>
         <log4j.version>2.11.2</log4j.version>
         <junit.version>5.4.2</junit.version>
+        <jdbi.version>3.12.2</jdbi.version>
+        <db.url>${env.PLUTUS_DB_URL}</db.url>
+        <db.username>${env.PLUTUS_DB_USERNAME}</db.username>
+        <db.password>${env.PLUTUS_DB_PASSWORD}</db.password>
     </properties>
 
     <dependencies>
@@ -60,6 +64,18 @@
         </dependency>
 
         <dependency>
+            <groupId>org.jdbi</groupId>
+            <artifactId>jdbi3-core</artifactId>
+            <version>${jdbi.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jdbi</groupId>
+            <artifactId>jdbi3-sqlobject</artifactId>
+            <version>${jdbi.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
             <version>${log4j.version}</version>
@@ -68,6 +84,12 @@
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
             <version>${log4j.version}</version>
         </dependency>
 
@@ -125,6 +147,11 @@
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>6.3.2</version>
+                <configuration>
+                    <url>${db.url}</url>
+                    <user>${db.username}</user>
+                    <password>${db.password}</password>
+                </configuration>
             </plugin>
 
             <!-- Static Analysis Plugins -->

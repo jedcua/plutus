@@ -1,18 +1,17 @@
 package dev.jedcua;
 
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class DependencyManager<T> {
     private static DependencyManager<?> instance;
-    private final Map<Class<?>, Object> dependencies;
+    private final List<Object> dependencies;
 
     private DependencyManager() {
-        this.dependencies = new ConcurrentHashMap<>();
+        this.dependencies = new ArrayList<>();
     }
 
-    public static DependencyManager initialize() {
+    public static DependencyManager<?> initialize() {
         instance = new DependencyManager<>();
         return instance;
     }
@@ -30,9 +29,11 @@ public final class DependencyManager<T> {
         return instance;
     }
 
-    public <T> T fetch(final Class<T> clazz) {
-        return Optional
-            .ofNullable(this.dependencies.get(clazz))
+    public <U> U fetch(final Class<U> clazz) {
+        return this.dependencies
+            .stream()
+            .filter(obj -> clazz.isAssignableFrom(obj.getClass()))
+            .findAny()
             .map(clazz::cast)
             .orElseThrow(() -> {
                 throw new IllegalArgumentException(
@@ -42,7 +43,24 @@ public final class DependencyManager<T> {
     }
 
     public DependencyManager<?> register(final Object object) {
-        this.dependencies.put(object.getClass(), object);
+        Object dependency = null;
+
+        for (int idx = 0; idx < this.dependencies.size(); idx = idx + 1) {
+            final Object current = this.dependencies.get(idx);
+            if (current.getClass().isAssignableFrom(object.getClass())) {
+                dependency = current;
+                this.dependencies.set(idx, object);
+                break;
+            }
+        }
+
+        if (dependency == null) {
+            this.dependencies.add(object);
+        }
         return instance;
+    }
+
+    public int size() {
+        return this.dependencies.size();
     }
 }

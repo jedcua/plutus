@@ -2,7 +2,8 @@ package dev.jedcua.model;
 
 public enum Module {
     WELCOME("welcome.fxml"),
-    INVENTORY("inventory.fxml");
+    STORE_LIST("store-list.fxml"),
+    STORE_ITEM("store-item.fxml");
 
     private final String filename;
 

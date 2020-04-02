@@ -11,7 +11,7 @@ public final class WelcomeController {
     }
 
     @FXML
-    public void openInventory(final ActionEvent event) {
-        StageManager.getInstance().loadModule(Module.INVENTORY);
+    public void openStores(final ActionEvent event) {
+        StageManager.getInstance().loadModule(Module.STORE_LIST);
     }
 }

@@ -17,7 +17,7 @@ public final class Main extends Application {
         LOGGER.info("Starting Plutus");
 
         StageManager.initialize(stage, WIDTH, HEIGHT);
-        StageManager.getInstance().loadModule(Module.WELCOME);
+        StageManager.getInstance().loadModule(Module.STORE_LIST);
     }
 
     public static void main(final String... args) {

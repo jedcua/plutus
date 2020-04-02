@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="store-list-container" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.jedcua.controller.StoreListController">
+   <children>
+      <ScrollPane hbarPolicy="NEVER" styleClass="store-list" layoutY="90.0" prefHeight="450.0" prefWidth="800.0">
+         <content>
+            <VBox fx:id="vBoxStores" alignment="TOP_CENTER" prefHeight="490.0" prefWidth="780.0" spacing="15.0">
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+      <Label alignment="BOTTOM_LEFT" layoutX="21.0" layoutY="47.0" styleClass="lbl-light" text="Stores">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <JFXTextField styleClass="txt-fld-light" layoutX="546.0" layoutY="52.0" prefHeight="26.0" prefWidth="240.0" promptText="Search names" />
+   </children>
+</AnchorPane>

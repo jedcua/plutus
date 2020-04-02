@@ -46,10 +46,11 @@
 <!--            <artifactId>javafx-graphics</artifactId>-->
 <!--            <classifier>mac</classifier>-->
 <!--        </dependency>-->
+
         <dependency>
-            <groupId>org.jfxtras</groupId>
-            <artifactId>jmetro</artifactId>
-            <version>11.6.9</version>
+            <groupId>com.jfoenix</groupId>
+            <artifactId>jfoenix</artifactId>
+            <version>9.0.8</version>
         </dependency>
 
         <dependency>
@@ -206,6 +207,7 @@
                         --add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
                         --add-opens dev.jedcua.plutus/dev.jedcua=ALL-UNNAMED
                         --add-opens dev.jedcua.plutus/dev.jedcua.ui=ALL-UNNAMED
+                        --add-opens dev.jedcua.plutus/dev.jedcua.ui.store=ALL-UNNAMED
                         --add-opens dev.jedcua.plutus/dev.jedcua.controller=ALL-UNNAMED
                     </argLine>
                 </configuration>

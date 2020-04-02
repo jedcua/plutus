@@ -1,0 +1,35 @@
+.btn-dark {
+    -jfx-button-type: RAISED;
+    -fx-background-color: #4f5d75;
+    -fx-text-fill: #fff;
+}
+
+.lbl-dark {
+    -fx-text-fill: #2d3142;
+}
+
+.lbl-light {
+    -fx-text-fill: #fff;
+}
+
+.txt-fld-light {
+    -jfx-focus-color: #ef8354;
+    -jfx-unfocus-color: #fff;
+    -fx-text-fill: #fff;
+    -fx-prompt-text-fill: #bfc0c0;
+}
+
+/* For store-list.xml */
+.store-list-container {
+    -fx-background-color: #4f5d75;
+}
+
+.store-list {
+    -fx-background-color: #bfc0c0;
+}
+
+/* For store-item.xml */
+.store-item {
+    -fx-background-color: #fff;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 12, 0.2, 4, 4);
+}

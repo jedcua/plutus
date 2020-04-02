@@ -25,11 +25,11 @@ public class WelcomeControllerTest {
     }
 
     @Test
-    public void openInventory(final FxRobot robot) {
+    public void openStores(final FxRobot robot) {
         StageManager.initialize(stage, 100, 100);
         Assertions.assertDoesNotThrow(() -> {
             robot.interact(() -> {
-                new WelcomeController().openInventory(null);
+                new WelcomeController().openStores(null);
             });
         });
     }

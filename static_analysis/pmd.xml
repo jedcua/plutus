@@ -24,7 +24,6 @@
     <rule ref="category/java/bestpractices.xml/UseVarargs" />
 
     <rule ref="category/java/codestyle.xml/AvoidUsingNativeCode" />
-    <rule ref="category/java/codestyle.xml/ClassNamingConventions" />
     <rule ref="category/java/codestyle.xml/DontImportJavaLang" />
     <rule ref="category/java/codestyle.xml/DuplicateImports" />
     <rule ref="category/java/codestyle.xml/ExtendsObject" />

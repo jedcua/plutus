@@ -8,7 +8,7 @@
       <VBox alignment="CENTER" layoutY="2.0" prefHeight="600.0" prefWidth="800.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label text="Welcome! Click on a module to get started." />
-            <Button mnemonicParsing="false" onAction="#openInventory" prefHeight="100.0" prefWidth="500.0" text="Inventory" />
+            <Button mnemonicParsing="false" onAction="#openStores" prefHeight="100.0" prefWidth="500.0" text="Inventory" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="500.0" text="Sales" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="500.0" text="Report" />
          </children>

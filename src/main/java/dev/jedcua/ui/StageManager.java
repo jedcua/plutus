@@ -6,12 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import jfxtras.styles.jmetro.JMetro;
-import jfxtras.styles.jmetro.Style;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
 import java.util.Objects;
 
 public final class StageManager {
@@ -52,14 +49,11 @@ public final class StageManager {
             );
             final Scene scene = new Scene(root);
 
-            final JMetro jMetro = new JMetro(Style.LIGHT);
-            jMetro.setAutomaticallyColorPanes(true);
-            jMetro.setScene(scene);
-
             this.stage.setScene(scene);
             this.stage.show();
-        } catch (final IOException exp) {
+        } catch (final Exception exp) {
             LOGGER.error(exp.getMessage(), exp);
+            throw new IllegalStateException(exp);
         }
     }
 }

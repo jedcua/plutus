@@ -1,4 +1,4 @@
-package dev.jedcua.model;
+package dev.jedcua.ui;
 
 public enum Module {
     WELCOME("welcome.fxml"),

@@ -1,7 +1,7 @@
 package dev.jedcua.controller;
 
 import dev.jedcua.Main;
-import dev.jedcua.model.Module;
+import dev.jedcua.ui.Module;
 import dev.jedcua.model.Store;
 import dev.jedcua.ui.store.StoreItemPaneFactory;
 import javafx.fxml.FXML;

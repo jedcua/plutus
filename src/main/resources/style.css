@@ -4,6 +4,18 @@
     -fx-text-fill: #fff;
 }
 
+.btn-light {
+    -jfx-button-type: RAISED;
+    -fx-background-color: #fff;
+    -fx-text-fill: #2d3142;
+}
+
+.btn-accent {
+    -jfx-button-type: RAISED;
+    -fx-background-color: #ef8354;
+    -fx-text-fill: #fff;
+}
+
 .lbl-dark {
     -fx-text-fill: #2d3142;
 }
@@ -16,6 +28,13 @@
     -jfx-focus-color: #ef8354;
     -jfx-unfocus-color: #fff;
     -fx-text-fill: #fff;
+    -fx-prompt-text-fill: #bfc0c0;
+}
+
+.txt-fld-dark {
+    -jfx-focus-color: #4f5d75;
+    -jfx-unfocus-color: #bfc0c0;
+    -fx-text-fill: #2d3142;
     -fx-prompt-text-fill: #bfc0c0;
 }
 
@@ -32,4 +51,13 @@
 .store-item {
     -fx-background-color: #fff;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 12, 0.2, 4, 4);
+}
+
+/*  for store-form.xml */
+.store-form-container {
+    -fx-background-color: #4f5d75;
+}
+
+.store-form {
+    -fx-background-color: #fff;
 }

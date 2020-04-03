@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Objects;
+import java.util.function.Supplier;
 
 public final class StageManager {
     private static final Logger LOGGER = LogManager.getLogger(StageManager.class);
@@ -21,19 +21,21 @@ public final class StageManager {
     }
 
     public void loadModule(final Module module) {
-        final Parent root;
-        try {
-            root = FXMLLoader.load(
-                Objects.requireNonNull(
-                    Main.class
-                        .getClassLoader()
-                        .getResource(module.getFilename())
-                )
-            );
-            final Scene scene = new Scene(root);
+        this.loadModule(module, () -> this.stage);
+    }
 
-            this.stage.setScene(scene);
-            this.stage.show();
+    public void loadModule(final Module module, final Supplier<Stage> stageSupplier) {
+        try {
+            final FXMLLoader loader = new FXMLLoader(
+                Main.class
+                    .getClassLoader()
+                    .getResource(module.getFilename())
+            );
+            final Parent root = loader.load();
+            final Scene scene = new Scene(root);
+            final Stage stg = stageSupplier.get();
+            stg.setScene(scene);
+            stg.show();
         } catch (final Exception exp) {
             LOGGER.error(exp.getMessage(), exp);
             throw new IllegalStateException(exp);

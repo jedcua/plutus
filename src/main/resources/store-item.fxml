@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="132.0" prefWidth="760.0" styleClass="store-item" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.jedcua.controller.StoreItemController">
+<AnchorPane prefHeight="130.0" prefWidth="760.0" minHeight="130" styleClass="store-item" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.jedcua.controller.StoreItemController">
    <children>
       <Label fx:id="storeName" styleClass="lbl-dark" layoutX="14.0" layoutY="14.0" text="My Supermarket - Branch 1">
          <font>

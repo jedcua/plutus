@@ -1,7 +1,7 @@
 package dev.jedcua.controller;
 
 import dev.jedcua.DependencyManager;
-import dev.jedcua.db.StoreRepository;
+import dev.jedcua.mock.MockStoreRepository;
 import dev.jedcua.model.Store;
 import dev.jedcua.ui.StageManager;
 import javafx.stage.Stage;
@@ -13,8 +13,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
-
-import java.util.Arrays;
 
 @ExtendWith(ApplicationExtension.class)
 public class WelcomeControllerTest {
@@ -30,7 +28,7 @@ public class WelcomeControllerTest {
         DependencyManager
             .initialize()
             .register(new StageManager(stage, 100, 100))
-            .register((StoreRepository) () -> Arrays.asList(
+            .register(new MockStoreRepository(
                 new Store(1L, "Name", "Address", "Tin")
             ));
     }

@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface StoreRepository {
     List<Store> list();
+
+    void save(Store store);
 }

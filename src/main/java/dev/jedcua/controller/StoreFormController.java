@@ -9,6 +9,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -31,6 +32,10 @@ public final class StoreFormController implements Initializable {
     @FXML
     public JFXButton btnCancel;
 
+    @FXML
+    public Label lblTitle;
+
+    public Long storeId;
     private final StoreRepository repository;
 
     public StoreFormController() {
@@ -47,8 +52,6 @@ public final class StoreFormController implements Initializable {
 
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
-        DependencyManager.getInstance().register(this);
-
         final ChangeListener<String> editListener = (observable, oldValue, newValue) -> {
             this.validate();
         };
@@ -70,7 +73,7 @@ public final class StoreFormController implements Initializable {
     @FXML
     public void save(final ActionEvent event) {
         this.repository.save(
-            new Store(null, txtFldName.getText(), txtFldAddress.getText(), txtFldTin.getText())
+            new Store(storeId, txtFldName.getText(), txtFldAddress.getText(), txtFldTin.getText())
         );
         this.close(event);
     }
@@ -79,5 +82,16 @@ public final class StoreFormController implements Initializable {
     public void close(final ActionEvent event) {
         final Stage stage = (Stage) this.btnCancel.getScene().getWindow();
         stage.close();
+    }
+
+    public void loadData(final Store store) {
+        this.storeId = store.getId();
+        this.txtFldName.setText(store.getName());
+        this.txtFldAddress.setText(store.getAddress());
+        this.txtFldTin.setText(store.getTin());
+
+        if (this.storeId != null) {
+            this.lblTitle.setText("Update " + this.lblTitle.getText());
+        }
     }
 }

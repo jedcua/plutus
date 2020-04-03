@@ -34,11 +34,26 @@ public class StoreRepositoryImplTest {
     }
 
     @Test
-    public void save() {
+    public void saveNew() {
         Assertions.assertDoesNotThrow(() -> {
             this.repository.save(
                 new Store(null, "TestStore", "TestStoreAddress", null)
             );
+        });
+    }
+
+    @Test
+    public void saveUpdate() {
+        final Store store = this.repository
+            .list()
+            .stream()
+            .findAny()
+            .orElseThrow(() ->
+                new IllegalStateException("Unable to find any stores for testing!")
+            );
+
+        Assertions.assertDoesNotThrow(() -> {
+            this.repository.save(store);
         });
     }
 }

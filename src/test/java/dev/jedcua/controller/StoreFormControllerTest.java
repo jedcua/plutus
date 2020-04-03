@@ -45,22 +45,23 @@ public class StoreFormControllerTest {
 
     @Test
     public void save(final FxRobot robot) {
+        final StoreFormController[] controller = new StoreFormController[1];
+
         robot.interact(() -> {
             DependencyManager
                 .getInstance()
                 .fetch(StageManager.class)
-                .loadModule(Module.STORE_FORM);
+                .loadModule(
+                    Module.STORE_FORM,
+                    (loader) -> controller[0] = loader.getController()
+                );
         });
 
-        final StoreFormController controller = DependencyManager
-            .getInstance()
-            .fetch(StoreFormController.class);
-
         robot.interact(() -> {
-            controller.txtFldName.setText("StoreName");
-            controller.txtFldAddress.setText("StoreAddress");
-            controller.txtFldTin.setText("StoreTin");
-            controller.save(null);
+            controller[0].txtFldName.setText("StoreName");
+            controller[0].txtFldAddress.setText("StoreAddress");
+            controller[0].txtFldTin.setText("StoreTin");
+            controller[0].save(null);
         });
 
         final List<Store> stores = DependencyManager

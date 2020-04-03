@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public final class StageManager {
@@ -21,10 +22,22 @@ public final class StageManager {
     }
 
     public void loadModule(final Module module) {
-        this.loadModule(module, () -> this.stage);
+        this.loadModule(module, () -> this.stage, loader -> { });
     }
 
     public void loadModule(final Module module, final Supplier<Stage> stageSupplier) {
+        this.loadModule(module, stageSupplier, loader -> { });
+    }
+
+    public void loadModule(final Module module, final Consumer<FXMLLoader> callback) {
+        this.loadModule(module, () -> this.stage, callback);
+    }
+
+    public void loadModule(
+        final Module module,
+        final Supplier<Stage> stageSupplier,
+        final Consumer<FXMLLoader> callback
+    ) {
         try {
             final FXMLLoader loader = new FXMLLoader(
                 Main.class
@@ -32,6 +45,7 @@ public final class StageManager {
                     .getResource(module.getFilename())
             );
             final Parent root = loader.load();
+            callback.accept(loader);
             final Scene scene = new Scene(root);
             final Stage stg = stageSupplier.get();
             stg.setScene(scene);

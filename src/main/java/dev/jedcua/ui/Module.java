@@ -3,7 +3,8 @@ package dev.jedcua.ui;
 public enum Module {
     WELCOME("welcome.fxml"),
     STORE_LIST("store-list.fxml"),
-    STORE_ITEM("store-item.fxml");
+    STORE_ITEM("store-item.fxml"),
+    STORE_FORM("store-form.fxml");
 
     private final String filename;
 

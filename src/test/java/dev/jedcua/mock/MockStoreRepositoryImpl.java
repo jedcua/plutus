@@ -22,7 +22,7 @@ public final class MockStoreRepositoryImpl implements StoreRepository {
     }
 
     @Override
-    public Page<Store> page(int offset, int limit) {
+    public Page<Store> page(int offset, int limit, String search) {
         final List<Store> stores = this.stores.subList(offset, offset + limit);
         return new Page<>(stores, offset);
     }

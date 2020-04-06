@@ -9,9 +9,15 @@ import java.util.List;
 
 public final class StoreRepositoryImpl implements StoreRepository {
     private static final String SELECT_QUERY =
-        "SELECT id, name, address, tin, created_at, updated_at FROM store ORDER BY created_at DESC";
+        "SELECT id, name, address, tin, created_at, updated_at FROM store ORDER BY updated_at DESC";
     private static final String SELECT_PAGED_QUERY =
-        "SELECT id, name, address, tin, created_at, updated_at FROM store ORDER BY created_at DESC "
+        "SELECT id, name, address, tin, created_at, updated_at FROM store "
+            + "WHERE ("
+                + "LOWER(name) LIKE CONCAT('%', :search, '%') OR "
+                + "LOWER(address) LIKE CONCAT('%', :search, '%') OR "
+                + ":search IS NULL"
+            + ")"
+            + "ORDER BY updated_at DESC "
             + "LIMIT :limit OFFSET :offset";
     private static final String SAVE_COMMAND =
         "INSERT INTO store(id, name, address, tin) VALUES (:id, :name, :address, :tin)";
@@ -33,12 +39,13 @@ public final class StoreRepositoryImpl implements StoreRepository {
     }
 
     @Override
-    public Page<Store> page(final int offset, final int limit) {
+    public Page<Store> page(final int offset, final int limit, final String search) {
         final List<Store> stores = this.jdbi
             .withHandle(handle -> handle
                 .createQuery(SELECT_PAGED_QUERY)
                 .bind("offset", offset)
                 .bind("limit", limit)
+                .bind("search", search)
                 .map((rs, ctx) -> Store.fromResultSet(rs))
                 .list());
         return new Page<>(stores, offset);

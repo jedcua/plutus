@@ -1,5 +1,6 @@
 package dev.jedcua.controller;
 
+import com.jfoenix.controls.JFXTextField;
 import dev.jedcua.DependencyManager;
 import dev.jedcua.Main;
 import dev.jedcua.db.StoreRepository;
@@ -36,6 +37,9 @@ public final class StoreListController implements Initializable {
     @FXML
     public ScrollPane scrollPane;
 
+    @FXML
+    public JFXTextField txtFldSearch;
+
     public Page<Store> lastPage;
     private StoreItemPaneFactory factory;
     private final StoreRepository repository;
@@ -59,13 +63,20 @@ public final class StoreListController implements Initializable {
 
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
-        this.lastPage = new Page.Empty<>();
         this.factory = new StoreItemPaneFactory(
             Main.class
                 .getClassLoader()
                 .getResource(Module.STORE_ITEM.getFilename())
         );
         this.scrollPane.vvalueProperty().addListener(this::loadNewStoresOnScrollEnd);
+        this.txtFldSearch.textProperty().addListener((obsvbl, ov, nv) -> this.resetItems());
+        this.resetItems();
+    }
+
+    public void resetItems() {
+        this.lastPage = new Page.Empty<>();
+        this.vBoxStores.getChildren().clear();
+        this.scrollPane.setVvalue(0);
         this.pushToScrollPane(
             this.fetchStorePage().getItems()
         );
@@ -100,8 +111,11 @@ public final class StoreListController implements Initializable {
     }
 
     private Page<Store> fetchStorePage() {
-        LOGGER.info("Fetching next store items");
-        this.lastPage = this.repository.page(this.lastPage.nextOffset(), ITEMS_PER_PAGE);
+        final String search = this.txtFldSearch.getText();
+        final int nextOffset = this.lastPage.nextOffset();
+        LOGGER.info("Fetch {} items | Offset: {} | Search: {}", ITEMS_PER_PAGE, nextOffset, search);
+
+        this.lastPage = this.repository.page(this.lastPage.nextOffset(), ITEMS_PER_PAGE, search);
         return this.lastPage;
     }
 

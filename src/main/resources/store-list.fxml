@@ -22,7 +22,7 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <JFXTextField layoutX="546.0" layoutY="52.0" prefHeight="26.0" prefWidth="240.0" promptText="Search names" styleClass="txt-fld-light" />
-      <JFXButton onAction="#openStoreForm" layoutX="460.0" layoutY="52.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-accent" stylesheets="@style.css" text="New" />
+      <JFXTextField fx:id="txtFldSearch" layoutX="457.0" layoutY="52.0" prefHeight="26.0" prefWidth="240.0" promptText="Search for stores..." styleClass="txt-fld-light" />
+      <JFXButton layoutX="707.0" layoutY="52.0" mnemonicParsing="false" onAction="#openStoreForm" prefHeight="26.0" prefWidth="79.0" styleClass="btn-accent" stylesheets="@style.css" text="New" />
    </children>
 </AnchorPane>

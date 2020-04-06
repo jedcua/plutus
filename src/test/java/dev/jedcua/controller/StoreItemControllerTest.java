@@ -17,6 +17,8 @@ import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 
+import java.util.function.Consumer;
+
 @ExtendWith(ApplicationExtension.class)
 public class StoreItemControllerTest {
     private Stage stage;
@@ -46,18 +48,29 @@ public class StoreItemControllerTest {
             .getInstance()
             .fetch(StageManager.class);
 
-        Assertions.assertDoesNotThrow(() -> {
-            robot.interact(() ->
-                stageManager.loadModule(Module.STORE_ITEM, this::invokeUpdate)
-            );
-        });
+        Assertions.assertDoesNotThrow(() -> robot.interact(() -> stageManager.loadModule(
+            Module.STORE_ITEM,
+            loader -> this.invokeCtrl(loader, ctrl -> ctrl.update(null))
+        )));
     }
 
-    public void invokeUpdate(final FXMLLoader loader) {
+    @Test
+    public void confirmDelete(final FxRobot robot) {
+        final StageManager stageManager = DependencyManager
+            .getInstance()
+            .fetch(StageManager.class);
+
+        Assertions.assertDoesNotThrow(() -> robot.interact(() -> stageManager.loadModule(
+            Module.STORE_ITEM,
+            loader -> this.invokeCtrl(loader, ctrl -> ctrl.confirmDelete(null))
+        )));
+    }
+
+    public void invokeCtrl(final FXMLLoader loader, final Consumer<StoreItemController> ctrlConsumer) {
         final StoreItemController controller = loader.getController();
         controller.loadData(
             new Store(1L, "Name", "Address", null)
         );
-        controller.update(null);
+        ctrlConsumer.accept(controller);
     }
 }

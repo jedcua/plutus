@@ -8,12 +8,14 @@ import dev.jedcua.model.Page;
 import dev.jedcua.model.Store;
 import dev.jedcua.ui.Module;
 import dev.jedcua.ui.StageManager;
+import dev.jedcua.ui.store.StoreItemDeleteDialogFactory;
 import dev.jedcua.ui.store.StoreItemPaneFactory;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
@@ -40,6 +42,9 @@ public class StoreListController implements Initializable {
 
     @FXML
     public JFXTextField txtFldSearch;
+
+    @FXML
+    public StackPane stackPaneRoot;
 
     public Page<Store> lastPage;
     private StoreItemPaneFactory factory;
@@ -82,6 +87,16 @@ public class StoreListController implements Initializable {
         this.pushToScrollPane(
             this.fetchStorePage().getItems()
         );
+    }
+
+    public void confirmDelete(final Store store) {
+        StoreItemDeleteDialogFactory
+            .build(store, dialog -> {
+                this.repository.delete(store);
+                this.resetItems();
+                dialog.close();
+            })
+            .show(this.stackPaneRoot);
     }
 
     @FXML

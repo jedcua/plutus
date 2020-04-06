@@ -23,6 +23,7 @@ public final class StoreRepositoryImpl implements StoreRepository {
         "INSERT INTO store(id, name, address, tin) VALUES (:id, :name, :address, :tin)";
     private static final String UPDATE_COMMAND =
         "UPDATE store SET name = :name, address = :address, tin = :tin WHERE id = :id";
+    private static final String DELETE_COMMAND = "DELETE FROM store WHERE id = :id";
     private final Jdbi jdbi;
 
     public StoreRepositoryImpl(final Jdbi jdbi) {
@@ -58,6 +59,15 @@ public final class StoreRepositoryImpl implements StoreRepository {
         } else {
             this.update(store);
         }
+    }
+
+    @Override
+    public void delete(final Store store) {
+        this.jdbi.useHandle(handle -> handle
+            .createUpdate(DELETE_COMMAND)
+            .bind("id", store.getId())
+            .execute()
+        );
     }
 
     public void insert(final Store store) {

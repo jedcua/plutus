@@ -97,4 +97,24 @@ public class StoreListControllerTest {
             robot.interact(() -> controller[0].openStoreForm(null));
         });
     }
+
+    @Test
+    public void confirmDelete(final FxRobot robot) {
+        final StageManager stageManager = DependencyManager
+            .getInstance()
+            .fetch(StageManager.class);
+
+        final StoreListController[] controller = new StoreListController[1];
+
+        robot.interact(() -> stageManager.loadModule(
+            Module.STORE_LIST,
+            (loader) -> controller[0] = loader.getController()
+        ));
+
+        final Store store = controller[0].lastPage.getItems().get(0);
+
+        Assertions.assertDoesNotThrow(() -> {
+            robot.interact(() -> controller[0].confirmDelete(store));
+        });
+    }
 }

@@ -10,6 +10,12 @@
     -fx-text-fill: #2d3142;
 }
 
+.btn-danger {
+    -jfx-button-type: RAISED;
+    -fx-background-color: #ef6663;
+    -fx-text-fill: #fff;
+}
+
 .btn-accent {
     -jfx-button-type: RAISED;
     -fx-background-color: #ef8354;

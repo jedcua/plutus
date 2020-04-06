@@ -31,4 +31,11 @@ public final class MockStoreRepositoryImpl implements StoreRepository {
     public void save(Store store) {
         this.stores.add(store);
     }
+
+    @Override
+    public void delete(Store store) {
+        this.stores.removeIf(
+            str -> str.getId().equals(store.getId())
+        );
+    }
 }

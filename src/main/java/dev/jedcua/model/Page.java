@@ -3,7 +3,7 @@ package dev.jedcua.model;
 import java.util.Collections;
 import java.util.List;
 
-public final class Page<T> {
+public class Page<T> {
     private final List<T> items;
     private final int offset;
 
@@ -12,15 +12,17 @@ public final class Page<T> {
         this.offset = offset;
     }
 
-    public Page(final int offset) {
-        this(Collections.emptyList(), offset);
-    }
-
-    public List<T> getItems() {
+    public final List<T> getItems() {
         return items;
     }
 
-    public int nextOffset() {
+    public final int nextOffset() {
         return this.offset + this.items.size();
+    }
+
+    public static class Empty<T> extends Page<T> {
+        public Empty() {
+            super(Collections.emptyList(), 0);
+        }
     }
 }

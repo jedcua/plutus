@@ -59,7 +59,7 @@ public final class StoreListController implements Initializable {
 
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
-        this.lastPage = new Page<>(0);
+        this.lastPage = new Page.Empty<>();
         this.factory = new StoreItemPaneFactory(
             Main.class
                 .getClassLoader()

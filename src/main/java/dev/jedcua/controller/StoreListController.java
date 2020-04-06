@@ -24,7 +24,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public final class StoreListController implements Initializable {
+@SuppressWarnings("checkstyle:designforextension")
+public class StoreListController implements Initializable {
     private static final Logger LOGGER = LogManager.getLogger(StoreListController.class);
     private static final int HEIGHT = 450;
     private static final int WIDTH = 600;
@@ -63,6 +64,7 @@ public final class StoreListController implements Initializable {
 
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
+        DependencyManager.getInstance().register(this);
         this.factory = new StoreItemPaneFactory(
             Main.class
                 .getClassLoader()

@@ -36,17 +36,25 @@ public final class StoreFormController implements Initializable {
     public Label lblTitle;
 
     public Long storeId;
+    private final StoreListController listController;
     private final StoreRepository repository;
 
     public StoreFormController() {
         this(
             DependencyManager
                 .getInstance()
+                .fetch(StoreListController.class),
+            DependencyManager
+                .getInstance()
                 .fetch(StoreRepository.class)
         );
     }
 
-    public StoreFormController(final StoreRepository repository) {
+    public StoreFormController(
+        final StoreListController listController,
+        final StoreRepository repository
+    ) {
+        this.listController = listController;
         this.repository = repository;
     }
 
@@ -75,6 +83,7 @@ public final class StoreFormController implements Initializable {
         this.repository.save(
             new Store(storeId, txtFldName.getText(), txtFldAddress.getText(), txtFldTin.getText())
         );
+        this.listController.resetItems();
         this.close(event);
     }
 

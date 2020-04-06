@@ -1,6 +1,7 @@
 package dev.jedcua.mock;
 
 import dev.jedcua.controller.StoreListController;
+import dev.jedcua.model.Store;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import org.apache.logging.log4j.LogManager;
@@ -20,6 +21,11 @@ public final class MockStoreListController extends StoreListController {
     @Override
     public void resetItems() {
         LOGGER.info("Mocking resetItems()");
+    }
+
+    @Override
+    public void confirmDelete(Store store) {
+        LOGGER.info("Mocking confirmDelete()");
     }
 
     @Override

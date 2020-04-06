@@ -51,6 +51,21 @@ public final class StoreItemController implements Initializable {
         );
     }
 
+    @FXML
+    public void confirmDelete(final ActionEvent event) {
+        DependencyManager
+            .getInstance()
+            .fetch(StoreListController.class)
+            .confirmDelete(
+                new Store(
+                    this.storeId,
+                    this.storeName.getText(),
+                    this.storeAddress.getText(),
+                    this.storeTin.getText()
+                )
+            );
+    }
+
     public void loadData(final Store store) {
         this.storeId = store.getId();
         this.storeName.setText(store.getName());

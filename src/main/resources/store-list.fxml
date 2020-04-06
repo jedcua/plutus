@@ -6,23 +6,27 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="store-list-container" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.jedcua.controller.StoreListController">
+<StackPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:id="stackPaneRoot" fx:controller="dev.jedcua.controller.StoreListController">
    <children>
-      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutY="90.0" prefHeight="450.0" prefWidth="800.0" styleClass="store-list">
-         <content>
-            <VBox fx:id="vBoxStores" alignment="TOP_CENTER" prefHeight="490.0" prefWidth="780.0" spacing="15.0">
-               <padding>
-                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-               </padding>
-            </VBox>
-         </content>
-      </ScrollPane>
-      <Label alignment="BOTTOM_LEFT" layoutX="21.0" layoutY="47.0" styleClass="lbl-light" text="Stores">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <JFXTextField fx:id="txtFldSearch" layoutX="457.0" layoutY="52.0" prefHeight="26.0" prefWidth="240.0" promptText="Search for stores..." styleClass="txt-fld-light" />
-      <JFXButton layoutX="707.0" layoutY="52.0" mnemonicParsing="false" onAction="#openStoreForm" prefHeight="26.0" prefWidth="79.0" styleClass="btn-accent" stylesheets="@style.css" text="New" />
+      <AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="store-list-container" stylesheets="@style.css">
+         <children>
+            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutY="90.0" prefHeight="450.0" prefWidth="800.0" styleClass="store-list">
+               <content>
+                  <VBox fx:id="vBoxStores" alignment="TOP_CENTER" prefHeight="490.0" prefWidth="780.0" spacing="15.0">
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </ScrollPane>
+            <Label alignment="BOTTOM_LEFT" layoutX="21.0" layoutY="47.0" styleClass="lbl-light" text="Stores">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtFldSearch" layoutX="457.0" layoutY="52.0" prefHeight="26.0" prefWidth="240.0" promptText="Search for stores..." styleClass="txt-fld-light" />
+            <JFXButton layoutX="707.0" layoutY="52.0" mnemonicParsing="false" onAction="#openStoreForm" prefHeight="26.0" prefWidth="79.0" styleClass="btn-accent" stylesheets="@style.css" text="New" />
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>

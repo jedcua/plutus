@@ -11,4 +11,6 @@ public interface StoreRepository {
     Page<Store> page(int offset, int limit, String search);
 
     void save(Store store);
+
+    void delete(Store store);
 }

@@ -56,4 +56,23 @@ public class StoreRepositoryImplTest {
             this.repository.save(store);
         });
     }
+
+    @Test
+    public void delete() {
+        this.repository.save(
+            new Store(null, "TestStore", "TestStoreAddress", null)
+        );
+
+        final Store store = this.repository
+            .list()
+            .stream()
+            .findAny()
+            .orElseThrow(() ->
+                new IllegalStateException("Unable to find any stores for testing!")
+            );
+
+        Assertions.assertDoesNotThrow(() -> {
+            this.repository.delete(store);
+        });
+    }
 }

@@ -1,7 +1,7 @@
 package dev.jedcua.controller;
 
 import dev.jedcua.DependencyManager;
-import dev.jedcua.mock.MockStoreRepository;
+import dev.jedcua.mock.MockStoreRepositoryImpl;
 import dev.jedcua.model.Store;
 import dev.jedcua.ui.StageManager;
 import javafx.stage.Stage;
@@ -28,8 +28,12 @@ public class WelcomeControllerTest {
         DependencyManager
             .initialize()
             .register(new StageManager(stage, 100, 100))
-            .register(new MockStoreRepository(
-                new Store(1L, "Name", "Address", "Tin")
+            .register(new MockStoreRepositoryImpl(
+                new Store(1L, "Name", "Address", "Tin"),
+                new Store(2L, "Name", "Address", "Tin"),
+                new Store(3L, "Name", "Address", "Tin"),
+                new Store(4L, "Name", "Address", "Tin"),
+                new Store(5L, "Name", "Address", "Tin")
             ));
     }
 

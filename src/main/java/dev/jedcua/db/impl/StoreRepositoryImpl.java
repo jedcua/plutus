@@ -1,6 +1,7 @@
 package dev.jedcua.db.impl;
 
 import dev.jedcua.db.StoreRepository;
+import dev.jedcua.model.Page;
 import dev.jedcua.model.Store;
 import org.jdbi.v3.core.Jdbi;
 
@@ -9,6 +10,9 @@ import java.util.List;
 public final class StoreRepositoryImpl implements StoreRepository {
     private static final String SELECT_QUERY =
         "SELECT id, name, address, tin, created_at, updated_at FROM store ORDER BY created_at DESC";
+    private static final String SELECT_PAGED_QUERY =
+        "SELECT id, name, address, tin, created_at, updated_at FROM store ORDER BY created_at DESC "
+            + "LIMIT :limit OFFSET :offset";
     private static final String SAVE_COMMAND =
         "INSERT INTO store(id, name, address, tin) VALUES (:id, :name, :address, :tin)";
     private static final String UPDATE_COMMAND =
@@ -26,6 +30,18 @@ public final class StoreRepositoryImpl implements StoreRepository {
                 .createQuery(SELECT_QUERY)
                 .map((rs, ctx) -> Store.fromResultSet(rs))
                 .list());
+    }
+
+    @Override
+    public Page<Store> page(final int offset, final int limit) {
+        final List<Store> stores = this.jdbi
+            .withHandle(handle -> handle
+                .createQuery(SELECT_PAGED_QUERY)
+                .bind("offset", offset)
+                .bind("limit", limit)
+                .map((rs, ctx) -> Store.fromResultSet(rs))
+                .list());
+        return new Page<>(stores, offset);
     }
 
     @Override

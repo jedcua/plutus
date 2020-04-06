@@ -2,6 +2,7 @@ package dev.jedcua.controller;
 
 import dev.jedcua.DependencyManager;
 import dev.jedcua.db.StoreRepository;
+import dev.jedcua.mock.MockStoreListController;
 import dev.jedcua.mock.MockStoreRepositoryImpl;
 import dev.jedcua.model.Store;
 import dev.jedcua.ui.Module;
@@ -35,7 +36,8 @@ public class StoreFormControllerTest {
         DependencyManager
             .initialize()
             .register(new StageManager(stage, 100, 100))
-            .register(new MockStoreRepositoryImpl());
+            .register(new MockStoreRepositoryImpl())
+            .register(new MockStoreListController());
     }
 
     @AfterEach

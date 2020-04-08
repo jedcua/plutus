@@ -3,6 +3,7 @@ package dev.jedcua;
 import dev.jedcua.config.Configuration;
 import dev.jedcua.config.impl.EnvironmentConfiguration;
 import dev.jedcua.db.JdbiFactory;
+import dev.jedcua.db.impl.ProductRepositoryImpl;
 import dev.jedcua.db.impl.StoreRepositoryImpl;
 import dev.jedcua.ui.Module;
 import dev.jedcua.ui.StageManager;
@@ -38,7 +39,8 @@ public final class Main extends Application {
             DependencyManager
                 .initialize()
                 .register(new StageManager(stage, WIDTH, HEIGHT))
-                .register(new StoreRepositoryImpl(jdbi));
+                .register(new StoreRepositoryImpl(jdbi))
+                .register(new ProductRepositoryImpl(jdbi));
 
             DependencyManager
                 .getInstance()

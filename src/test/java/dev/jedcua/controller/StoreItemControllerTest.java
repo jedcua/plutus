@@ -1,6 +1,7 @@
 package dev.jedcua.controller;
 
 import dev.jedcua.DependencyManager;
+import dev.jedcua.mock.MockProductRepositoryImpl;
 import dev.jedcua.mock.MockStoreListController;
 import dev.jedcua.mock.MockStoreRepositoryImpl;
 import dev.jedcua.model.Store;
@@ -34,7 +35,8 @@ public class StoreItemControllerTest {
             .initialize()
             .register(new StageManager(stage, 100, 100))
             .register(new MockStoreRepositoryImpl())
-            .register(new MockStoreListController());
+            .register(new MockStoreListController())
+            .register(new MockProductRepositoryImpl());
     }
 
     @AfterEach
@@ -63,6 +65,18 @@ public class StoreItemControllerTest {
         Assertions.assertDoesNotThrow(() -> robot.interact(() -> stageManager.loadModule(
             Module.STORE_ITEM,
             loader -> this.invokeCtrl(loader, ctrl -> ctrl.confirmDelete(null))
+        )));
+    }
+
+    @Test
+    public void showProducts(final FxRobot robot) {
+        final StageManager stageManager = DependencyManager
+            .getInstance()
+            .fetch(StageManager.class);
+
+        Assertions.assertDoesNotThrow(() -> robot.interact(() -> stageManager.loadModule(
+            Module.STORE_ITEM,
+            loader -> this.invokeCtrl(loader, ctrl -> ctrl.showProducts(null))
         )));
     }
 

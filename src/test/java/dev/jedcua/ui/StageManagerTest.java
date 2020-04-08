@@ -41,4 +41,16 @@ public final class StageManagerTest {
             });
         });
     }
+
+    @Test
+    public void loadModuleException(FxRobot robot) {
+        final StageManager stageManager = new StageManager(stage, 100, 100);
+        Assertions.assertThrows(
+            Exception.class,
+            () -> robot.interact(() -> stageManager.loadModule(
+                Module.WELCOME,
+                loader -> { throw new UnsupportedOperationException("Not Supported!"); }
+            ))
+        );
+    }
 }

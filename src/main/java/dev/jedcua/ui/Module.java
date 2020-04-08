@@ -4,7 +4,8 @@ public enum Module {
     WELCOME("welcome.fxml"),
     STORE_LIST("store-list.fxml"),
     STORE_ITEM("store-item.fxml"),
-    STORE_FORM("store-form.fxml");
+    STORE_FORM("store-form.fxml"),
+    PRODUCT_LIST("product-list.fxml");
 
     private final String filename;
 

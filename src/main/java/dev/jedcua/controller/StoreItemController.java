@@ -26,17 +26,22 @@ public final class StoreItemController implements Initializable {
 
     public Long storeId;
     private final StageManager stageManager;
+    private final StoreListController storeListController;
 
     public StoreItemController() {
         this(
             DependencyManager
                 .getInstance()
-                .fetch(StageManager.class)
+                .fetch(StageManager.class),
+            DependencyManager
+                .getInstance()
+                .fetch(StoreListController.class)
         );
     }
 
-    public StoreItemController(final StageManager stageManager) {
+    public StoreItemController(final StageManager stageManager, final StoreListController storeListController) {
         this.stageManager = stageManager;
+        this.storeListController = storeListController;
     }
 
     @Override
@@ -47,23 +52,28 @@ public final class StoreItemController implements Initializable {
         this.stageManager.loadModule(
             Module.STORE_FORM,
             Stage::new,
-            this::transferData
+            this::loadStoreFormData
+        );
+    }
+
+    @FXML
+    public void showProducts(final ActionEvent event) {
+        this.stageManager.loadModule(
+            Module.PRODUCT_LIST,
+            this::loadProductListData
         );
     }
 
     @FXML
     public void confirmDelete(final ActionEvent event) {
-        DependencyManager
-            .getInstance()
-            .fetch(StoreListController.class)
-            .confirmDelete(
-                new Store(
-                    this.storeId,
-                    this.storeName.getText(),
-                    this.storeAddress.getText(),
-                    this.storeTin.getText()
-                )
-            );
+        this.storeListController.confirmDelete(
+            new Store(
+                this.storeId,
+                this.storeName.getText(),
+                this.storeAddress.getText(),
+                this.storeTin.getText()
+            )
+        );
     }
 
     public void loadData(final Store store) {
@@ -73,9 +83,21 @@ public final class StoreItemController implements Initializable {
         this.storeTin.setText(store.getTin());
     }
 
-    private void transferData(final FXMLLoader loader) {
+    private void loadStoreFormData(final FXMLLoader loader) {
         final StoreFormController formCtrl = loader.getController();
         formCtrl.loadData(
+            new Store(
+                this.storeId,
+                this.storeName.getText(),
+                this.storeAddress.getText(),
+                this.storeTin.getText()
+            )
+        );
+    }
+
+    private void loadProductListData(final FXMLLoader loader) {
+        final ProductListController formCtrl = loader.getController();
+        formCtrl.loadStore(
             new Store(
                 this.storeId,
                 this.storeName.getText(),

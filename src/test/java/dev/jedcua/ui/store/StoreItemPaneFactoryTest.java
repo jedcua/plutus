@@ -2,8 +2,10 @@ package dev.jedcua.ui.store;
 
 import dev.jedcua.DependencyManager;
 import dev.jedcua.Main;
-import dev.jedcua.ui.Module;
+import dev.jedcua.mock.MockStoreListController;
+import dev.jedcua.mock.MockStoreRepositoryImpl;
 import dev.jedcua.model.Store;
+import dev.jedcua.ui.Module;
 import dev.jedcua.ui.StageManager;
 import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
@@ -34,7 +36,9 @@ public class StoreItemPaneFactoryTest {
     public void beforeEach() {
         DependencyManager
             .initialize()
-            .register(new StageManager(stage, 100, 100));
+            .register(new StageManager(stage, 100, 100))
+            .register(new MockStoreRepositoryImpl())
+            .register(new MockStoreListController());
     }
 
     @AfterEach

@@ -22,7 +22,7 @@ before_script:
 script:
   - mvn clean
   - mvn flyway:migrate
-  - mysql -D plutus < src/test/resources/db/stores.sql
+  - mysql -D plutus < src/test/resources/db/test-data.sql
   - mvn verify
   - mvn compile
 #  - mvn javafx:jlink

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane fx:id="stackPaneRoot" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.jedcua.controller.ProductListController">
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="product-list-container" stylesheets="@style.css">
+         <children>
+            <Label fx:id="lblProducts" alignment="BOTTOM_LEFT" layoutX="21.0" layoutY="47.0" prefHeight="36.0" prefWidth="493.0" styleClass="lbl-light" text="Products">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="611.0" layoutY="52.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-accent" stylesheets="@style.css" text="New" />
+            <JFXButton layoutX="700.0" layoutY="52.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-light" stylesheets="@style.css" text="Update" />
+            <JFXButton layoutX="700.0" layoutY="535.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-danger" stylesheets="@style.css" text="Delete" />
+            <JFXButton onAction="#backToStoreList" layoutX="21.0" layoutY="535.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-light" stylesheets="@style.css" text="Back" />
+            <AnchorPane layoutY="105.0" prefHeight="420.0" prefWidth="800.0" styleClass="product-list">
+               <children>
+                  <TableView fx:id="tblProducts" editable="true" layoutX="20.0" layoutY="20.0" prefHeight="380.0" prefWidth="760.0">
+                     <placeholder>
+                         <Label text="Define new products by clicking 'New'" />
+                     </placeholder>
+                     <columns>
+                        <TableColumn editable="false" prefWidth="80.0" resizable="false" text="id">
+                           <cellValueFactory>
+                              <PropertyValueFactory property="id" />
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="300.0" resizable="false" text="Name">
+                           <cellValueFactory>
+                              <PropertyValueFactory property="name" />
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="180.0" resizable="false" text="Barcode">
+                           <cellValueFactory>
+                              <PropertyValueFactory property="barcode" />
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="100.0" resizable="false" text="Price">
+                           <cellValueFactory>
+                              <PropertyValueFactory property="price" />
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="70.0" resizable="false" text="Unit">
+                           <cellValueFactory>
+                              <PropertyValueFactory property="unit" />
+                           </cellValueFactory>
+                        </TableColumn>
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

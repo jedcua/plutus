@@ -15,7 +15,7 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <JFXButton layoutX="611.0" layoutY="52.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-accent" stylesheets="@style.css" text="New" />
+            <JFXButton onAction="#newProduct" layoutX="611.0" layoutY="52.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-accent" stylesheets="@style.css" text="New" />
             <JFXButton layoutX="700.0" layoutY="52.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-light" stylesheets="@style.css" text="Update" />
             <JFXButton layoutX="700.0" layoutY="535.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-danger" stylesheets="@style.css" text="Delete" />
             <JFXButton onAction="#backToStoreList" layoutX="21.0" layoutY="535.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-light" stylesheets="@style.css" text="Back" />

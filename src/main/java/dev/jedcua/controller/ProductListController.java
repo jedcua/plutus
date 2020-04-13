@@ -13,13 +13,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public final class ProductListController implements Initializable {
+@SuppressWarnings("checkstyle:designforextension")
+public class ProductListController implements Initializable {
     @FXML
     public StackPane stackPaneRoot;
 
@@ -51,7 +53,9 @@ public final class ProductListController implements Initializable {
     }
 
     @Override
-    public void initialize(final URL location, final ResourceBundle resources) { }
+    public void initialize(final URL location, final ResourceBundle resources) {
+        DependencyManager.getInstance().register(this);
+    }
 
     public void loadStore(final Store store) {
         this.store = store;
@@ -62,6 +66,18 @@ public final class ProductListController implements Initializable {
         );
 
         this.initializeTable(this.products);
+    }
+
+    @FXML
+    public void newProduct() {
+        this.stageManager.loadModule(
+            Module.PRODUCT_FORM,
+            Stage::new,
+            loader -> {
+                final ProductFormController formCtrl = loader.getController();
+                formCtrl.loadData(this.store, Product.empty());
+            }
+        );
     }
 
     @FXML

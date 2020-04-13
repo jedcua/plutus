@@ -80,3 +80,12 @@
 .table-cell.col-amount {
     -fx-alignment: CENTER_RIGHT;
 }
+
+/* For product-form.xml */
+.product-form-container {
+    -fx-background-color: #4f5d75;
+}
+
+.product-form {
+    -fx-background-color: #fff;
+}

@@ -74,5 +74,9 @@
 }
 
 .product-list {
-    -fx-background-color: #fff;
+    -fx-background-color: #e1e1e1;
+}
+
+.table-cell.col-amount {
+    -fx-alignment: CENTER_RIGHT;
 }

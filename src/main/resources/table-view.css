@@ -1,0 +1,45 @@
+.table-view,
+.table-view:focused {
+    -fx-background-insets: none;
+    -fx-background-radius: none;
+    -fx-border-color: #555;
+    -fx-border-width: 0.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 12, 0.2, 4, 4);
+}
+
+.column-header-background,
+.column-header-background .filler,
+.column-header {
+    -fx-background-color: #fff;
+}
+
+.column-header .label,
+.table-row-cell {
+    -fx-pref-height: 56;
+}
+
+.table-column {
+    -fx-alignment: CENTER;
+}
+
+.table-row-cell {
+    -fx-background-color: #fff;
+}
+
+.table-row-cell:focused {
+    -fx-background-color: rgba(239, 131, 84, 0.24);
+}
+
+.table-row-cell:selected .text,
+.table-row-cell:focused .text {
+    -fx-fill: #000;
+}
+
+.table-row-cell {
+    -fx-border-color: #eee transparent transparent transparent;
+}
+
+.table-cell {
+    -fx-border-color: transparent transparent transparent transparent;
+}
+

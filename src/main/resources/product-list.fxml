@@ -21,7 +21,7 @@
             <JFXButton onAction="#backToStoreList" layoutX="21.0" layoutY="535.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-light" stylesheets="@style.css" text="Back" />
             <AnchorPane layoutY="105.0" prefHeight="420.0" prefWidth="800.0" styleClass="product-list">
                <children>
-                  <TableView fx:id="tblProducts" editable="true" layoutX="20.0" layoutY="20.0" prefHeight="380.0" prefWidth="760.0">
+                  <TableView fx:id="tblProducts" editable="true" stylesheets="table-view.css" layoutX="20.0" layoutY="20.0" prefHeight="380.0" prefWidth="760.0">
                      <placeholder>
                          <Label text="Define new products by clicking 'New'" />
                      </placeholder>
@@ -41,7 +41,7 @@
                               <PropertyValueFactory property="barcode" />
                            </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="100.0" resizable="false" text="Price">
+                        <TableColumn styleClass="col-amount" prefWidth="100.0" resizable="false" text="Price">
                            <cellValueFactory>
                               <PropertyValueFactory property="price" />
                            </cellValueFactory>

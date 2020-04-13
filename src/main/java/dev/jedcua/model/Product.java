@@ -47,4 +47,14 @@ public final class Product {
             rs.getString("unit")
         );
     }
+
+    public static Product empty() {
+        return new Product(
+            null,
+            null,
+            null,
+            null,
+            null
+        );
+    }
 }

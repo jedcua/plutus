@@ -96,6 +96,24 @@ public class ProductListControllerTest {
     }
 
     @Test
+    public void newProduct(final FxRobot robot) {
+        final StageManager stageManager = DependencyManager
+            .getInstance()
+            .fetch(StageManager.class);
+
+        final ProductListController[] controller = new ProductListController[1];
+
+        robot.interact(() -> stageManager.loadModule(
+            Module.PRODUCT_LIST,
+            (loader) -> controller[0] = loader.getController()
+        ));
+
+        robot.interact(() -> Assertions.assertDoesNotThrow(
+            controller[0]::newProduct
+        ));
+    }
+
+    @Test
     public void backToStoreList(final FxRobot robot) {
         final StageManager stageManager = DependencyManager
             .getInstance()

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.cell.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 <StackPane fx:id="stackPaneRoot" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.jedcua.controller.ProductListController">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="product-list-container" stylesheets="@style.css">
@@ -16,8 +16,8 @@
                </font>
             </Label>
             <JFXButton onAction="#newProduct" layoutX="611.0" layoutY="52.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-accent" stylesheets="@style.css" text="New" />
-            <JFXButton layoutX="700.0" layoutY="52.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-light" stylesheets="@style.css" text="Update" />
-            <JFXButton layoutX="700.0" layoutY="535.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-danger" stylesheets="@style.css" text="Delete" />
+            <JFXButton fx:id="btnUpdate" disable="true" onAction="#updateProduct" layoutX="700.0" layoutY="52.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-light" stylesheets="@style.css" text="Update" />
+            <JFXButton fx:id="btnDelete" disable="true" layoutX="700.0" layoutY="535.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-danger" stylesheets="@style.css" text="Delete" />
             <JFXButton onAction="#backToStoreList" layoutX="21.0" layoutY="535.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-light" stylesheets="@style.css" text="Back" />
             <AnchorPane layoutY="105.0" prefHeight="420.0" prefWidth="800.0" styleClass="product-list">
                <children>

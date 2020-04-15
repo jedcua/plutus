@@ -14,6 +14,13 @@ public final class ProductRepositoryImpl implements ProductRepository {
         "INSERT INTO "
             + "product (name, barcode, price, unit, store_id) "
             + "VALUES (:name, :barcode, :price, :unit, :store_id)";
+    private static final String UPDATE_COMMAND =
+        "UPDATE product SET "
+            + "name = :name, "
+            + "barcode = :barcode, "
+            + "price = :price, "
+            + "unit = :unit "
+            + "WHERE id = :id";
     private final Jdbi jdbi;
 
     public ProductRepositoryImpl(final Jdbi jdbi) {
@@ -35,7 +42,7 @@ public final class ProductRepositoryImpl implements ProductRepository {
         if (product.getId() == null) {
             this.insert(store, product);
         } else {
-            throw new UnsupportedOperationException("Update not yet supported");
+            this.update(product);
         }
     }
 
@@ -43,6 +50,18 @@ public final class ProductRepositoryImpl implements ProductRepository {
         this.jdbi.useHandle(handle -> handle
             .createUpdate(INSERT_COMMAND)
             .bind("store_id", store.getId())
+            .bind("name", product.getName())
+            .bind("barcode", product.getBarcode())
+            .bind("price", product.getPrice())
+            .bind("unit", product.getUnit())
+            .execute()
+        );
+    }
+
+    private void update(final Product product) {
+        this.jdbi.useHandle(handle -> handle
+            .createUpdate(UPDATE_COMMAND)
+            .bind("id", product.getId())
             .bind("name", product.getName())
             .bind("barcode", product.getBarcode())
             .bind("price", product.getPrice())

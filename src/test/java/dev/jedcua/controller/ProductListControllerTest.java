@@ -1,6 +1,7 @@
 package dev.jedcua.controller;
 
 import dev.jedcua.DependencyManager;
+import dev.jedcua.db.StoreRepository;
 import dev.jedcua.mock.MockProductRepositoryImpl;
 import dev.jedcua.mock.MockStoreRepositoryImpl;
 import dev.jedcua.model.Product;
@@ -33,7 +34,9 @@ public class ProductListControllerTest {
         DependencyManager
             .initialize()
             .register(new StageManager(stage, 100, 100))
-            .register(new MockProductRepositoryImpl())
+            .register(new MockProductRepositoryImpl(
+                new Product(1L, "Name", "Barcode", 12.23, "Unit")
+            ))
             .register(new MockStoreRepositoryImpl(
                 new Store(1L, "Name", "Address", "Tin"),
                 new Store(2L, "Name", "Address", "Tin"),
@@ -111,6 +114,33 @@ public class ProductListControllerTest {
         robot.interact(() -> Assertions.assertDoesNotThrow(
             controller[0]::newProduct
         ));
+    }
+
+    @Test
+    public void updateProduct(final FxRobot robot) {
+        final StageManager stageManager = DependencyManager
+            .getInstance()
+            .fetch(StageManager.class);
+        final Store store = DependencyManager
+            .getInstance()
+            .fetch(StoreRepository.class)
+            .list()
+            .get(0);
+
+        final ProductListController[] controller = new ProductListController[1];
+
+        robot.interact(() -> stageManager.loadModule(
+            Module.PRODUCT_LIST,
+            (loader) -> {
+                controller[0] = loader.getController();
+                controller[0].loadStore(store);
+            }
+        ));
+
+        robot.interact(() -> {
+            controller[0].tblProducts.getSelectionModel().selectLast();
+            Assertions.assertDoesNotThrow(controller[0]::updateProduct);
+        });
     }
 
     @Test

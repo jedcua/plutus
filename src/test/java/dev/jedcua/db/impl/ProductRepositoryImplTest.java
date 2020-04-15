@@ -41,12 +41,24 @@ public class ProductRepositoryImplTest {
     }
 
     @Test
-    public void save() {
+    public void saveNew() {
         Assertions.assertDoesNotThrow(() -> {
             this.productRepository.save(store, new Product(
                 null, "Name", "Barcode", 123.45, "Unit")
             );
         });
+    }
+
+    @Test
+    public void saveUpdate() {
+        this.productRepository
+            .list(store)
+            .stream()
+            .findFirst()
+            .ifPresent(product
+                -> Assertions.assertDoesNotThrow(()
+                -> this.productRepository.save(store, product)
+            ));
     }
 
     @Test

@@ -41,6 +41,7 @@ public final class ProductFormController implements Initializable {
     public Label lblTitle;
 
     public Store store;
+    public Long productId;
     private final ProductListController listController;
     private final ProductRepository repository;
 
@@ -87,7 +88,7 @@ public final class ProductFormController implements Initializable {
         this.repository.save(
             this.store,
             new Product(
-                null,
+                this.productId,
                 this.txtFldName.getText(),
                 this.txtFldBarcode.getText(),
                 Double.valueOf(this.txtFldPrice.getText()),
@@ -106,6 +107,12 @@ public final class ProductFormController implements Initializable {
 
     public void loadData(final Store store, final Product product) {
         this.store = store;
+        Optional
+            .ofNullable(product.getId())
+            .ifPresent(id -> {
+                this.productId = id;
+                this.lblTitle.setText("Update " + this.lblTitle.getText());
+            });
         Optional
             .ofNullable(product.getName())
             .ifPresent(name -> this.txtFldName.setText(name));

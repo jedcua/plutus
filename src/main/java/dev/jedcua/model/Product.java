@@ -1,5 +1,7 @@
 package dev.jedcua.model;
 
+import dev.jedcua.ui.product.ProductTableRow;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -45,6 +47,16 @@ public final class Product {
             rs.getString("barcode"),
             rs.getDouble("price"),
             rs.getString("unit")
+        );
+    }
+
+    public static Product fromTableRow(final ProductTableRow tableRow) {
+        return new Product(
+            tableRow.getId(),
+            tableRow.getName(),
+            tableRow.getBarcode(),
+            tableRow.getPrice(),
+            tableRow.getUnit()
         );
     }
 

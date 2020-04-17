@@ -144,6 +144,33 @@ public class ProductListControllerTest {
     }
 
     @Test
+    public void deleteProduct(final FxRobot robot) {
+        final StageManager stageManager = DependencyManager
+            .getInstance()
+            .fetch(StageManager.class);
+        final Store store = DependencyManager
+            .getInstance()
+            .fetch(StoreRepository.class)
+            .list()
+            .get(0);
+
+        final ProductListController[] controller = new ProductListController[1];
+
+        robot.interact(() -> stageManager.loadModule(
+            Module.PRODUCT_LIST,
+            (loader) -> {
+                controller[0] = loader.getController();
+                controller[0].loadStore(store);
+            }
+        ));
+
+        robot.interact(() -> {
+            controller[0].tblProducts.getSelectionModel().selectLast();
+            Assertions.assertDoesNotThrow(controller[0]::deleteProduct);
+        });
+    }
+
+    @Test
     public void backToStoreList(final FxRobot robot) {
         final StageManager stageManager = DependencyManager
             .getInstance()

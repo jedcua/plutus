@@ -7,6 +7,7 @@ import dev.jedcua.model.Product;
 import dev.jedcua.model.Store;
 import dev.jedcua.ui.Module;
 import dev.jedcua.ui.StageManager;
+import dev.jedcua.ui.product.ProductDeleteDialogFactory;
 import dev.jedcua.ui.product.ProductTableRow;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -106,6 +107,22 @@ public class ProductListController implements Initializable {
             Stage::new,
             this.loadStoreAndProduct(product)
         );
+    }
+
+    @FXML
+    public void deleteProduct() {
+        final Product product = Product.fromTableRow(
+            this.tblProducts
+                .getSelectionModel()
+                .getSelectedItem()
+        );
+        ProductDeleteDialogFactory
+            .build(product, dialog -> {
+                this.repository.delete(product);
+                this.loadStore(this.store);
+                dialog.close();
+            })
+            .show(this.stackPaneRoot);
     }
 
     @FXML

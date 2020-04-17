@@ -62,6 +62,20 @@ public class ProductRepositoryImplTest {
     }
 
     @Test
+    public void delete() {
+        this.productRepository.save(store, new Product(
+            null, "Name", "Barcode", 123.45, "Unit")
+        );
+        final Product product = this.productRepository
+            .list(store)
+            .get(0);
+
+        Assertions.assertDoesNotThrow(
+            () -> this.productRepository.delete(product)
+        );
+    }
+
+    @Test
     public void list() {
         final String name = UUID.randomUUID().toString();
         final Product product = new Product(

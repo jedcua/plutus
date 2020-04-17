@@ -21,6 +21,7 @@ public final class ProductRepositoryImpl implements ProductRepository {
             + "price = :price, "
             + "unit = :unit "
             + "WHERE id = :id";
+    private static final String DELETE_COMMAND = "DELETE FROM product WHERE id = :id";
     private final Jdbi jdbi;
 
     public ProductRepositoryImpl(final Jdbi jdbi) {
@@ -44,6 +45,15 @@ public final class ProductRepositoryImpl implements ProductRepository {
         } else {
             this.update(product);
         }
+    }
+
+    @Override
+    public void delete(final Product product) {
+        this.jdbi.useHandle(handle -> handle
+            .createUpdate(DELETE_COMMAND)
+            .bind("id", product.getId())
+            .execute()
+        );
     }
 
     private void insert(final Store store, final Product product) {

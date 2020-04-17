@@ -16,8 +16,8 @@
                </font>
             </Label>
             <JFXButton onAction="#newProduct" layoutX="611.0" layoutY="52.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-accent" stylesheets="@style.css" text="New" />
-            <JFXButton fx:id="btnUpdate" disable="true" onAction="#updateProduct" layoutX="700.0" layoutY="52.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-light" stylesheets="@style.css" text="Update" />
-            <JFXButton fx:id="btnDelete" disable="true" layoutX="700.0" layoutY="535.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-danger" stylesheets="@style.css" text="Delete" />
+            <JFXButton onAction="#updateProduct" fx:id="btnUpdate" disable="true" layoutX="700.0" layoutY="52.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-light" stylesheets="@style.css" text="Update" />
+            <JFXButton onAction="#deleteProduct" fx:id="btnDelete" disable="true" layoutX="700.0" layoutY="535.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-danger" stylesheets="@style.css" text="Delete" />
             <JFXButton onAction="#backToStoreList" layoutX="21.0" layoutY="535.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-light" stylesheets="@style.css" text="Back" />
             <AnchorPane layoutY="105.0" prefHeight="420.0" prefWidth="800.0" styleClass="product-list">
                <children>

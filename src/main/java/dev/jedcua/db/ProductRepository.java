@@ -9,4 +9,6 @@ public interface ProductRepository {
     List<Product> list(Store store);
 
     void save(Store store, Product product);
+
+    void delete(Product product);
 }

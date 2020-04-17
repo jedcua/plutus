@@ -25,4 +25,11 @@ public final class MockProductRepositoryImpl implements ProductRepository {
     public void save(Store store, Product product) {
         this.products.add(product);
     }
+
+    @Override
+    public void delete(Product product) {
+        this.products.removeIf(
+            p -> p.getId().equals(product.getId())
+        );
+    }
 }

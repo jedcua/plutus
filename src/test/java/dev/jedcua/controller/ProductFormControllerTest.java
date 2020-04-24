@@ -36,7 +36,7 @@ public class ProductFormControllerTest {
     public void beforeEach() {
         DependencyManager
             .initialize()
-            .register(new StageManager(stage, 100, 100))
+            .register(new StageManager(stage))
             .register(new MockProductRepositoryImpl())
             .register(new MockProductListController());
 

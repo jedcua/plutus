@@ -17,8 +17,6 @@ import java.sql.SQLException;
 
 public final class Main extends Application {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
-    private static final int WIDTH = 800;
-    private static final int HEIGHT = 600;
 
     private final Configuration configuration;
 
@@ -38,7 +36,7 @@ public final class Main extends Application {
 
             DependencyManager
                 .initialize()
-                .register(new StageManager(stage, WIDTH, HEIGHT))
+                .register(new StageManager(stage))
                 .register(new StoreRepositoryImpl(jdbi))
                 .register(new ProductRepositoryImpl(jdbi));
 

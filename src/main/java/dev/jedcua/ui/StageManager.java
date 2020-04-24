@@ -15,10 +15,8 @@ public final class StageManager {
     private static final Logger LOGGER = LogManager.getLogger(StageManager.class);
     private Stage stage;
 
-    public StageManager(final Stage stage, final Integer width, final Integer height) {
+    public StageManager(final Stage stage) {
         this.stage = stage;
-        stage.setWidth(width);
-        stage.setHeight(height);
     }
 
     public void loadModule(final Module module) {

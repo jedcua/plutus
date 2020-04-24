@@ -35,7 +35,7 @@ public class StoreListControllerTest {
         this.storeFirst = new Store(1L, "Name", "Address", "Tin");
         DependencyManager
             .initialize()
-            .register(new StageManager(stage, 100, 100))
+            .register(new StageManager(stage))
             .register(new MockStoreRepositoryImpl(
                 storeFirst,
                 new Store(2L, "Name", "Address", "Tin"),

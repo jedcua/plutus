@@ -33,7 +33,7 @@ public class StoreItemControllerTest {
     public void beforeEach() {
         DependencyManager
             .initialize()
-            .register(new StageManager(stage, 100, 100))
+            .register(new StageManager(stage))
             .register(new MockStoreRepositoryImpl())
             .register(new MockStoreListController())
             .register(new MockProductRepositoryImpl());

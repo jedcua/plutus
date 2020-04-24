@@ -34,6 +34,13 @@ public class StoreRepositoryImplTest {
     }
 
     @Test
+    public void page() {
+        Assertions.assertDoesNotThrow(() -> {
+            this.repository.page(0, 5, null);
+        });
+    }
+
+    @Test
     public void saveNew() {
         Assertions.assertDoesNotThrow(() -> {
             this.repository.save(

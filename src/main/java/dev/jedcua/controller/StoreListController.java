@@ -106,6 +106,11 @@ public class StoreListController implements Initializable {
         );
     }
 
+    @FXML
+    public void backToWelcome(final ActionEvent event) {
+        this.stageManager.loadModule(Module.WELCOME);
+    }
+
     public void loadNewStoresOnScrollEnd(
         final ObservableValue<? extends Number> observable,
         final Number oldValue,

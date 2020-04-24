@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:id="stackPaneRoot" fx:controller="dev.jedcua.controller.StoreListController">
+<StackPane fx:id="stackPaneRoot" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.jedcua.controller.StoreListController">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="store-list-container" stylesheets="@style.css">
          <children>
@@ -26,6 +26,7 @@
             </Label>
             <JFXTextField fx:id="txtFldSearch" layoutX="457.0" layoutY="52.0" prefHeight="26.0" prefWidth="240.0" promptText="Search for stores..." styleClass="txt-fld-light" />
             <JFXButton layoutX="707.0" layoutY="52.0" mnemonicParsing="false" onAction="#openStoreForm" prefHeight="26.0" prefWidth="79.0" styleClass="btn-accent" stylesheets="@style.css" text="New" />
+            <JFXButton layoutX="21.0" layoutY="556.0" mnemonicParsing="false" onAction="#backToWelcome" prefHeight="26.0" prefWidth="79.0" styleClass="btn-light" stylesheets="@style.css" text="Back" />
          </children>
       </AnchorPane>
    </children>

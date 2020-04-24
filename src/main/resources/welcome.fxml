@@ -1,17 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.jedcua.controller.WelcomeController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.jedcua.controller.WelcomeController">
    <children>
-      <VBox alignment="CENTER" layoutY="2.0" prefHeight="600.0" prefWidth="800.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane prefHeight="600.0" prefWidth="250.0" styleClass="welcome-logo-container">
          <children>
-            <Label text="Welcome! Click on a module to get started." />
-            <Button mnemonicParsing="false" onAction="#openStores" prefHeight="100.0" prefWidth="500.0" text="Inventory" />
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="500.0" text="Sales" />
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="500.0" text="Report" />
+            <Label layoutX="95.0" layoutY="240.0" text="P" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="100.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <AnchorPane layoutX="250" prefHeight="600.0" prefWidth="550.0" styleClass="welcome-module-container">
+         <children>
+            <VBox alignment="CENTER" layoutY="2.0" prefHeight="600.0" prefWidth="800.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label text="Welcome to Plutus">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Label text="Click on a module to get started" />
+                  <JFXButton mnemonicParsing="false" onAction="#openStores" prefHeight="100.0" prefWidth="500.0" styleClass="welcome-btn-module" text="Manage Stores and Products">
+                     <font>
+                        <Font size="18.0" />
+                     </font></JFXButton>
+                  <JFXButton mnemonicParsing="false" prefHeight="100.0" prefWidth="500.0" styleClass="welcome-btn-module" text="Create Invoice">
+                     <font>
+                        <Font size="18.0" />
+                     </font></JFXButton>
+               </children>
+            </VBox>
          </children>
-      </VBox>
+      </AnchorPane>
    </children>
 </AnchorPane>

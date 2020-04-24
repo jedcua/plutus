@@ -44,6 +44,21 @@
     -fx-prompt-text-fill: #bfc0c0;
 }
 
+/* For welcome.fxml */
+.welcome-logo-container {
+    -fx-background-color: #2d3142;
+}
+
+.welcome-module-container {
+    -fx-background-color: #ffffff;
+}
+
+.welcome-btn-module {
+    -jfx-button-type: RAISED;
+    -fx-background-color: #4f5d75;
+    -fx-text-fill: #fff;
+}
+
 /* For store-list.xml */
 .store-list-container {
     -fx-background-color: #4f5d75;

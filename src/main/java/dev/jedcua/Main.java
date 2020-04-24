@@ -43,7 +43,7 @@ public final class Main extends Application {
             DependencyManager
                 .getInstance()
                 .fetch(StageManager.class)
-                .loadModule(Module.STORE_LIST);
+                .loadModule(Module.WELCOME);
         } catch (final SQLException exp) {
             LOGGER.error(exp.getMessage(), exp);
             throw new RuntimeException(exp);

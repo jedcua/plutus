@@ -24,13 +24,12 @@ import org.apache.logging.log4j.Logger;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("checkstyle:designforextension")
 public class StoreListController implements Initializable {
     private static final Logger LOGGER = LogManager.getLogger(StoreListController.class);
-    private static final int HEIGHT = 450;
-    private static final int WIDTH = 600;
     private static final int ITEMS_PER_PAGE = 5;
     private static final double SCROLL_VAL_END = 1.00;
 
@@ -103,12 +102,7 @@ public class StoreListController implements Initializable {
     public void openStoreForm(final ActionEvent event) {
         this.stageManager.loadModule(
             Module.STORE_FORM,
-            () -> {
-                final Stage stage = new Stage();
-                stage.setHeight(HEIGHT);
-                stage.setWidth(WIDTH);
-                return stage;
-            }
+            (Supplier<Stage>) Stage::new
         );
     }
 

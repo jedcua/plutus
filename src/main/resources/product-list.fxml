@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.cell.*?>
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
 <StackPane fx:id="stackPaneRoot" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.jedcua.controller.ProductListController">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="product-list-container" stylesheets="@style.css">
@@ -15,13 +15,13 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <JFXButton onAction="#newProduct" layoutX="611.0" layoutY="52.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-accent" stylesheets="@style.css" text="New" />
-            <JFXButton onAction="#updateProduct" fx:id="btnUpdate" disable="true" layoutX="700.0" layoutY="52.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-light" stylesheets="@style.css" text="Update" />
-            <JFXButton onAction="#deleteProduct" fx:id="btnDelete" disable="true" layoutX="700.0" layoutY="535.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-danger" stylesheets="@style.css" text="Delete" />
-            <JFXButton onAction="#backToStoreList" layoutX="21.0" layoutY="535.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-light" stylesheets="@style.css" text="Back" />
+            <JFXButton layoutX="611.0" layoutY="52.0" mnemonicParsing="false" onAction="#newProduct" prefHeight="26.0" prefWidth="79.0" styleClass="btn-accent" stylesheets="@style.css" text="New" />
+            <JFXButton fx:id="btnUpdate" disable="true" layoutX="700.0" layoutY="52.0" mnemonicParsing="false" onAction="#updateProduct" prefHeight="26.0" prefWidth="79.0" styleClass="btn-light" stylesheets="@style.css" text="Update" />
+            <JFXButton fx:id="btnDelete" disable="true" layoutX="700.0" layoutY="548.0" mnemonicParsing="false" onAction="#deleteProduct" prefHeight="26.0" prefWidth="79.0" styleClass="btn-danger" stylesheets="@style.css" text="Delete" />
+            <JFXButton layoutX="21.0" layoutY="548.0" mnemonicParsing="false" onAction="#backToStoreList" prefHeight="26.0" prefWidth="79.0" styleClass="btn-light" stylesheets="@style.css" text="Back" />
             <AnchorPane layoutY="105.0" prefHeight="420.0" prefWidth="800.0" styleClass="product-list">
                <children>
-                  <TableView fx:id="tblProducts" editable="true" stylesheets="table-view.css" layoutX="20.0" layoutY="20.0" prefHeight="380.0" prefWidth="760.0">
+                  <TableView fx:id="tblProducts" editable="true" layoutX="20.0" layoutY="20.0" prefHeight="380.0" prefWidth="760.0" stylesheets="table-view.css">
                      <placeholder>
                          <Label text="Define new products by clicking 'New'" />
                      </placeholder>
@@ -41,7 +41,7 @@
                               <PropertyValueFactory property="barcode" />
                            </cellValueFactory>
                         </TableColumn>
-                        <TableColumn styleClass="col-amount" prefWidth="100.0" resizable="false" text="Price">
+                        <TableColumn prefWidth="100.0" resizable="false" styleClass="col-amount" text="Price">
                            <cellValueFactory>
                               <PropertyValueFactory property="price" />
                            </cellValueFactory>

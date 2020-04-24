@@ -27,7 +27,7 @@ public class WelcomeControllerTest {
     public void beforeEach() {
         DependencyManager
             .initialize()
-            .register(new StageManager(stage, 100, 100))
+            .register(new StageManager(stage))
             .register(new MockStoreRepositoryImpl(
                 new Store(1L, "Name", "Address", "Tin"),
                 new Store(2L, "Name", "Address", "Tin"),

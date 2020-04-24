@@ -19,7 +19,7 @@ public final class StageManagerTest {
     public void beforeEach() {
         DependencyManager
             .initialize()
-            .register(new StageManager(stage, 100, 100));
+            .register(new StageManager(stage));
     }
 
     @AfterEach
@@ -34,7 +34,7 @@ public final class StageManagerTest {
 
     @Test
     public void loadModule(FxRobot robot) {
-        final StageManager stageManager = new StageManager(stage, 100, 100);
+        final StageManager stageManager = new StageManager(stage);
         Assertions.assertDoesNotThrow(() -> {
             robot.interact(() -> {
                 stageManager.loadModule(Module.WELCOME);
@@ -44,7 +44,7 @@ public final class StageManagerTest {
 
     @Test
     public void loadModuleException(FxRobot robot) {
-        final StageManager stageManager = new StageManager(stage, 100, 100);
+        final StageManager stageManager = new StageManager(stage);
         Assertions.assertThrows(
             Exception.class,
             () -> robot.interact(() -> stageManager.loadModule(

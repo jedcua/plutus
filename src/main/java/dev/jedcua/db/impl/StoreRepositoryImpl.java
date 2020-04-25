@@ -9,7 +9,7 @@ import java.util.List;
 
 public final class StoreRepositoryImpl implements StoreRepository {
     private static final String SELECT_QUERY =
-        "SELECT id, name, address, tin, created_at, updated_at FROM store ORDER BY updated_at DESC";
+        "SELECT id, name, address, tin, created_at, updated_at FROM store ORDER BY name ASC";
     private static final String SELECT_PAGED_QUERY =
         "SELECT id, name, address, tin, created_at, updated_at FROM store "
             + "WHERE ("

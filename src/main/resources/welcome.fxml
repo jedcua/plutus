@@ -29,7 +29,7 @@
                      <font>
                         <Font size="18.0" />
                      </font></JFXButton>
-                  <JFXButton mnemonicParsing="false" prefHeight="100.0" prefWidth="500.0" styleClass="welcome-btn-module" text="Create Invoice">
+                  <JFXButton mnemonicParsing="false" onAction="#openInvoiceForm" prefHeight="100.0" prefWidth="500.0" styleClass="welcome-btn-module" text="Create Invoice">
                      <font>
                         <Font size="18.0" />
                      </font></JFXButton>

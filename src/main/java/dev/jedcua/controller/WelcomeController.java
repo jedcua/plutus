@@ -25,4 +25,9 @@ public final class WelcomeController {
     public void openStores(final ActionEvent event) {
         this.stageManager.loadModule(Module.STORE_LIST);
     }
+
+    @FXML
+    public void openInvoiceForm(final ActionEvent event) {
+        this.stageManager.loadModule(Module.INVOICE_FORM);
+    }
 }

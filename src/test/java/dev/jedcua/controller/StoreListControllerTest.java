@@ -99,6 +99,24 @@ public class StoreListControllerTest {
     }
 
     @Test
+    public void backToWelcome(final FxRobot robot) {
+        final StageManager stageManager = DependencyManager
+            .getInstance()
+            .fetch(StageManager.class);
+
+        final StoreListController[] controller = new StoreListController[1];
+
+        robot.interact(() -> stageManager.loadModule(
+            Module.STORE_LIST,
+            (loader) -> controller[0] = loader.getController()
+        ));
+
+        Assertions.assertDoesNotThrow(() -> {
+            robot.interact(() -> controller[0].backToWelcome(null));
+        });
+    }
+
+    @Test
     public void confirmDelete(final FxRobot robot) {
         final StageManager stageManager = DependencyManager
             .getInstance()

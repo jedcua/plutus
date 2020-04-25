@@ -6,7 +6,8 @@ public enum Module {
     STORE_ITEM("store-item.fxml"),
     STORE_FORM("store-form.fxml"),
     PRODUCT_LIST("product-list.fxml"),
-    PRODUCT_FORM("product-form.fxml");
+    PRODUCT_FORM("product-form.fxml"),
+    INVOICE_FORM("invoice-form.fxml");
 
     private final String filename;
 

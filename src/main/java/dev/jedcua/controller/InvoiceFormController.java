@@ -1,5 +1,6 @@
 package dev.jedcua.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import dev.jedcua.DependencyManager;
 import dev.jedcua.db.StoreRepository;
@@ -10,17 +11,27 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public final class InvoiceFormController implements Initializable {
+    private static final Logger LOGGER = LogManager.getLogger(InvoiceFormController.class);
+
     @FXML
     public JFXComboBox<Label> cmbStores;
 
+    @FXML
+    public JFXButton btnAddProduct;
+
     public List<Store> stores;
+    public Store selectedStore;
 
     private final StageManager stageManager;
     private final StoreRepository storeRepository;
@@ -50,10 +61,29 @@ public final class InvoiceFormController implements Initializable {
                 .map(s -> new Label(s.getName()))
                 .collect(Collectors.toList())
         );
+        this.cmbStores.getSelectionModel().selectedIndexProperty().addListener(
+            (obsrvbl, oldIdx, newIdx) -> {
+                this.selectedStore = this.stores.get(newIdx.intValue());
+                this.btnAddProduct.setDisable(false);
+                LOGGER.info("Store select | Index: {} | Name: {}", newIdx, this.selectedStore.getName());
+            }
+        );
     }
 
     @FXML
     public void backToWelcome(final ActionEvent event) {
         this.stageManager.loadModule(Module.WELCOME);
+    }
+
+    @FXML
+    public void openAddProductForm(final ActionEvent event) {
+        this.stageManager.loadModule(
+            Module.INVOICE_ADD_PRODUCT_FORM,
+            Stage::new,
+            loader -> {
+                final InvoiceAddProductFormController controller = loader.getController();
+                controller.loadData(this.selectedStore);
+            }
+        );
     }
 }

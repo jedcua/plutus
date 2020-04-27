@@ -10,6 +10,12 @@ import java.util.List;
 public final class ProductRepositoryImpl implements ProductRepository {
     private static final String SELECT_QUERY =
         "SELECT id, name, barcode, price, unit, created_at, updated_at FROM product WHERE store_id = :store_id";
+    private static final String SELECT_QUERY_SEARCH =
+        "SELECT id, name, barcode, price, unit, created_at, updated_at "
+            + "FROM product "
+            + "WHERE "
+                + "store_id = :store_id AND "
+                + "lower(name) LIKE CONCAT('%', :query, '%')";
     private static final String INSERT_COMMAND =
         "INSERT INTO "
             + "product (name, barcode, price, unit, store_id) "
@@ -34,6 +40,17 @@ public final class ProductRepositoryImpl implements ProductRepository {
             .withHandle(handle -> handle
                 .createQuery(SELECT_QUERY)
                 .bind("store_id", store.getId())
+                .map((rs, ctx) -> Product.fromResultSet(rs))
+                .list());
+    }
+
+    @Override
+    public List<Product> search(final Store store, final String query) {
+        return this.jdbi
+            .withHandle(handle -> handle
+                .createQuery(SELECT_QUERY_SEARCH)
+                .bind("store_id", store.getId())
+                .bind("query", query)
                 .map((rs, ctx) -> Product.fromResultSet(rs))
                 .list());
     }

@@ -47,6 +47,7 @@ public final class StageManager {
             final Scene scene = new Scene(root);
             final Stage stg = stageSupplier.get();
             stg.setScene(scene);
+            stg.setResizable(false);
             stg.show();
         } catch (final Exception exp) {
             LOGGER.error(exp.getMessage(), exp);

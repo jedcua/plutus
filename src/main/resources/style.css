@@ -113,3 +113,12 @@
 .invoice-form {
     -fx-background-color: #e1e1e1;
 }
+
+/* For invoice-add-product-form.fxml */
+.invoice-add-product-form-container {
+    -fx-background-color: #4f5d75;
+}
+
+.invoice-add-product-form {
+    -fx-background-color: #e1e1e1;
+}

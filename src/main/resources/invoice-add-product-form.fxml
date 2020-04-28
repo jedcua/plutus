@@ -22,7 +22,7 @@
                         <PropertyValueFactory property="name" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="100.0" resizable="false" styleClass="col-amount" text="Price">
+                <TableColumn prefWidth="100.0" resizable="false" styleClass="col-price" text="Price">
                     <cellValueFactory>
                         <PropertyValueFactory property="price" />
                     </cellValueFactory>
@@ -48,6 +48,6 @@
          </font>
       </Label>
       <JFXButton fx:id="btnCancel" layoutX="515.0" layoutY="479.0" mnemonicParsing="false" onAction="#close" prefHeight="26.0" prefWidth="71.0" styleClass="btn-light" text="Cancel" />
-      <JFXButton fx:id="btnAdd" disable="true" layoutX="431.0" layoutY="479.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="71.0" styleClass="btn-accent" text="Add" />
+      <JFXButton fx:id="btnAdd" disable="true" layoutX="431.0" layoutY="479.0" mnemonicParsing="false" onAction="#add" prefHeight="26.0" prefWidth="71.0" styleClass="btn-accent" text="Add" />
    </children>
 </AnchorPane>

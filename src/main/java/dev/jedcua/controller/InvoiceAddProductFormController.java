@@ -25,6 +25,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class InvoiceAddProductFormController implements Initializable {
+    private static final int SEARCH_LEN_THRESHOLD = 3;
+
     @FXML
     public JFXTextField txtFldSearch;
 
@@ -42,14 +44,22 @@ public final class InvoiceAddProductFormController implements Initializable {
 
     public Store store;
     public Product product;
+    private final InvoiceFormController invoiceFormController;
     private final ProductRepository productRepository;
 
-    public InvoiceAddProductFormController(final ProductRepository productRepository) {
+    public InvoiceAddProductFormController(
+        final InvoiceFormController invoiceFormController,
+        final ProductRepository productRepository
+    ) {
+        this.invoiceFormController = invoiceFormController;
         this.productRepository = productRepository;
     }
 
     public InvoiceAddProductFormController() {
         this(
+            DependencyManager
+                .getInstance()
+                .fetch(InvoiceFormController.class),
             DependencyManager
                 .getInstance()
                 .fetch(ProductRepository.class)
@@ -64,6 +74,15 @@ public final class InvoiceAddProductFormController implements Initializable {
         this.txtFldQuantity.textProperty().addListener(editListener);
         this.txtFldSearch.textProperty().addListener(this::handleSearchProducts);
         this.tblProducts.getSelectionModel().selectedItemProperty().addListener(this::handleSelectProduct);
+    }
+
+    @FXML
+    public void add(final ActionEvent event) {
+        this.invoiceFormController.addInvoiceProduct(
+            this.product,
+            Integer.parseInt(this.txtFldQuantity.getText())
+        );
+        this.close(event);
     }
 
     @FXML
@@ -95,13 +114,13 @@ public final class InvoiceAddProductFormController implements Initializable {
         this.btnAdd.setDisable(!allValid);
     }
 
-    private void handleSearchProducts(
+    public void handleSearchProducts(
         final ObservableValue<? extends String> obsrvble,
         final String oldVal,
         final String newVal
     ) {
         final List<Product> products;
-        if (newVal != null && newVal.length() >= 3) {
+        if (newVal != null && newVal.length() >= SEARCH_LEN_THRESHOLD) {
             products = this.productRepository.search(this.store, newVal);
         } else {
             products = Collections.emptyList();
@@ -109,7 +128,7 @@ public final class InvoiceAddProductFormController implements Initializable {
         this.initializeTable(products);
     }
 
-    private void handleSelectProduct(
+    public void handleSelectProduct(
         final ObservableValue<? extends ProductTableRow> obsrvbl,
         final ProductTableRow oldVal,
         final ProductTableRow newVal

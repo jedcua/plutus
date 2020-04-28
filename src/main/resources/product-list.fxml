@@ -41,7 +41,7 @@
                               <PropertyValueFactory property="barcode" />
                            </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="100.0" resizable="false" styleClass="col-amount" text="Price">
+                        <TableColumn prefWidth="100.0" resizable="false" styleClass="col-price" text="Price">
                            <cellValueFactory>
                               <PropertyValueFactory property="price" />
                            </cellValueFactory>

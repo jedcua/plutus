@@ -7,6 +7,7 @@ import dev.jedcua.model.Store;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public final class MockProductRepositoryImpl implements ProductRepository {
     private final List<Product> products;
@@ -19,6 +20,14 @@ public final class MockProductRepositoryImpl implements ProductRepository {
     @Override
     public List<Product> list(Store store) {
         return this.products;
+    }
+
+    @Override
+    public List<Product> search(final Store store, final String query) {
+        return this.products
+            .stream()
+            .filter(p -> p.getName().toLowerCase().contains(query.toLowerCase()))
+            .collect(Collectors.toList());
     }
 
     @Override

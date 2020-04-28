@@ -93,6 +93,28 @@ public class ProductRepositoryImplTest {
                 .stream()
                 .map(Product::getName)
                 .collect(Collectors.toList()),
+            Matchers.hasItem(name)
+        );
+    }
+
+    @Test
+    public void search() {
+        final String name = UUID.randomUUID().toString();
+        final Product product = new Product(
+            null,
+            name,
+            "ProductBarCode",
+            123.45,
+            "Unit"
+        );
+        this.productRepository.save(store, product);
+
+        MatcherAssert.assertThat(
+            this.productRepository
+                .search(store, name)
+                .stream()
+                .map(Product::getName)
+                .collect(Collectors.toList()),
             Matchers.contains(name)
         );
     }

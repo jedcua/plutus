@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import com.jfoenix.validation.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="527.0" prefWidth="600.0" styleClass="invoice-add-product-form-container" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.jedcua.controller.InvoiceAddProductFormController">
+   <children>
+      <AnchorPane layoutY="90.0" prefHeight="371.0" prefWidth="600.0" styleClass="invoice-add-product-form">
+         <children>
+            <JFXTextField fx:id="txtFldSearch" labelFloat="true" layoutX="29.0" layoutY="43.0" prefHeight="26.0" prefWidth="328.0" promptText="Search products" />
+            <TableView fx:id="tblProducts" layoutX="30.0" layoutY="115.0" prefHeight="227.0" prefWidth="540.0" stylesheets="table-view.css">
+              <placeholder>
+                <Label text="Search for products by typing on 'Search products'" />
+              </placeholder>
+              <columns>
+                <TableColumn prefWidth="300.0" resizable="false" text="Name">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="name" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="100.0" resizable="false" styleClass="col-price" text="Price">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="price" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="70.0" resizable="false" text="Unit">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="unit" />
+                    </cellValueFactory>
+                </TableColumn>
+              </columns>
+            </TableView>
+             <JFXTextField fx:id="txtFldQuantity" labelFloat="true" layoutX="369.0" layoutY="43.0" prefHeight="26.0" prefWidth="199.0" promptText="Quantity *">
+                 <validators>
+                   <RequiredFieldValidator message="Quantity is required" />
+                   <IntegerValidator message="Quantity must be a number" />
+                 </validators>
+             </JFXTextField>
+         </children>
+      </AnchorPane>
+      <Label alignment="BOTTOM_LEFT" layoutX="25.0" layoutY="40.0" styleClass="lbl-light" text="Add Product">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnCancel" layoutX="515.0" layoutY="479.0" mnemonicParsing="false" onAction="#close" prefHeight="26.0" prefWidth="71.0" styleClass="btn-light" text="Cancel" />
+      <JFXButton fx:id="btnAdd" disable="true" layoutX="431.0" layoutY="479.0" mnemonicParsing="false" onAction="#add" prefHeight="26.0" prefWidth="71.0" styleClass="btn-accent" text="Add" />
+   </children>
+</AnchorPane>

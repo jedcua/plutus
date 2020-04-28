@@ -18,8 +18,8 @@
             <AnchorPane layoutY="90.0" prefHeight="450.0" prefWidth="800.0" styleClass="invoice-form">
                <children>
                   <JFXComboBox fx:id="cmbStores" labelFloat="true" layoutX="20.0" layoutY="27.0" prefHeight="26.0" prefWidth="298.0" promptText="Select a store" />
-                  <JFXButton layoutX="680.0" layoutY="27.0" mnemonicParsing="false" styleClass="btn-dark" text="Add Product" />
-                   <TableView editable="true" layoutX="20.0" layoutY="74.0" prefHeight="320.0" prefWidth="760.0" stylesheets="table-view.css">
+                  <JFXButton fx:id="btnAddProduct" disable="true" onAction="#openAddProductForm" layoutX="680.0" layoutY="27.0" mnemonicParsing="false" styleClass="btn-dark" text="Add Product" />
+                   <TableView fx:id="tblInvoiceProducts" editable="true" layoutX="20.0" layoutY="74.0" prefHeight="320.0" prefWidth="760.0" stylesheets="table-view.css">
                        <placeholder>
                            <Label text="Select a store, then add products by clicking 'Add Product'" />
                        </placeholder>
@@ -29,7 +29,7 @@
                                    <PropertyValueFactory property="name" />
                                </cellValueFactory>
                            </TableColumn>
-                           <TableColumn prefWidth="100.0" resizable="false" styleClass="col-amount" text="Price">
+                           <TableColumn prefWidth="100.0" resizable="false" styleClass="col-price" text="Price">
                                <cellValueFactory>
                                    <PropertyValueFactory property="price" />
                                </cellValueFactory>
@@ -44,9 +44,9 @@
                                    <PropertyValueFactory property="quantity" />
                                </cellValueFactory>
                            </TableColumn>
-                           <TableColumn prefWidth="200.0" resizable="false" text="Subtotal">
+                           <TableColumn prefWidth="170.0" resizable="false" styleClass="col-subtotal" text="Subtotal">
                                <cellValueFactory>
-                                   <PropertyValueFactory property="subTotal" />
+                                   <PropertyValueFactory property="subtotal" />
                                </cellValueFactory>
                            </TableColumn>
                        </columns>

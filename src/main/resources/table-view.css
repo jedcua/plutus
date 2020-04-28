@@ -4,7 +4,6 @@
     -fx-background-radius: none;
     -fx-border-color: #555;
     -fx-border-width: 0.1;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 12, 0.2, 4, 4);
 }
 
 .column-header-background,
@@ -47,3 +46,7 @@
     -fx-border-color: transparent transparent transparent transparent;
 }
 
+.table-cell.col-price,
+.table-cell.col-subtotal {
+    -fx-alignment: CENTER_RIGHT;
+}

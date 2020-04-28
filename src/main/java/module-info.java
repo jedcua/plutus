@@ -13,6 +13,7 @@ module dev.jedcua.plutus {
     exports dev.jedcua.db;
     exports dev.jedcua.model;
     exports dev.jedcua.ui.product;
+    exports dev.jedcua.ui.invoice;
     exports dev.jedcua.ui;
     exports dev.jedcua;
 }

@@ -89,11 +89,7 @@
 }
 
 .product-list {
-    -fx-background-color: #e1e1e1;
-}
-
-.table-cell.col-amount {
-    -fx-alignment: CENTER_RIGHT;
+    -fx-background-color: #ffffff;
 }
 
 /* For product-form.xml */
@@ -111,5 +107,14 @@
 }
 
 .invoice-form {
-    -fx-background-color: #e1e1e1;
+    -fx-background-color: #ffffff;
+}
+
+/* For invoice-add-product-form.fxml */
+.invoice-add-product-form-container {
+    -fx-background-color: #4f5d75;
+}
+
+.invoice-add-product-form {
+    -fx-background-color: #ffffff;
 }

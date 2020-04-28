@@ -18,7 +18,8 @@
             <AnchorPane layoutY="90.0" prefHeight="450.0" prefWidth="800.0" styleClass="invoice-form">
                <children>
                   <JFXComboBox fx:id="cmbStores" labelFloat="true" layoutX="20.0" layoutY="27.0" prefHeight="26.0" prefWidth="298.0" promptText="Select a store" />
-                  <JFXButton fx:id="btnAddProduct" disable="true" onAction="#openAddProductForm" layoutX="680.0" layoutY="27.0" mnemonicParsing="false" styleClass="btn-dark" text="Add Product" />
+                  <JFXButton fx:id="btnRemoveProduct" disable="true" layoutX="564.0" layoutY="27.0" mnemonicParsing="false" onAction="#removeInvoiceProduct" prefHeight="26.0" prefWidth="98.0" styleClass="btn-danger" text="Remove" />
+                  <JFXButton fx:id="btnAddProduct" disable="true" layoutX="680.0" layoutY="27.0" mnemonicParsing="false" onAction="#openAddProductForm" styleClass="btn-dark" text="Add Product" />
                    <TableView fx:id="tblInvoiceProducts" editable="true" layoutX="20.0" layoutY="74.0" prefHeight="320.0" prefWidth="760.0" stylesheets="table-view.css">
                        <placeholder>
                            <Label text="Select a store, then add products by clicking 'Add Product'" />

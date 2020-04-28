@@ -36,6 +36,9 @@ public class InvoiceFormController implements Initializable {
     @FXML
     public JFXButton btnAddProduct;
 
+    @FXML
+    public JFXButton btnRemoveProduct;
+
     public List<Store> stores;
     public Store selectedStore;
 
@@ -75,11 +78,23 @@ public class InvoiceFormController implements Initializable {
                 LOGGER.info("Store select | Index: {} | Name: {}", newIdx, this.selectedStore.getName());
             }
         );
+        this.tblInvoiceProducts.getSelectionModel().selectedIndexProperty().addListener(
+            (observable, oldValue, newValue) -> {
+                this.btnRemoveProduct.setDisable(newValue.intValue() < 0);
+            }
+        );
     }
 
     @FXML
     public void backToWelcome(final ActionEvent event) {
         this.stageManager.loadModule(Module.WELCOME);
+    }
+
+    @FXML
+    public void removeInvoiceProduct() {
+        this.tblInvoiceProducts.getItems().remove(
+            this.tblInvoiceProducts.getSelectionModel().getSelectedItem()
+        );
     }
 
     @FXML

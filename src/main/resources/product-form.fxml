@@ -6,9 +6,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="430.0" prefWidth="600.0" styleClass="product-form-container" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.jedcua.controller.ProductFormController">
+<AnchorPane prefHeight="430.0" prefWidth="600.0" styleClass="plutus-container" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.jedcua.controller.ProductFormController">
    <children>
-      <AnchorPane layoutY="90.0" prefHeight="273.0" prefWidth="600.0" styleClass="product-form">
+      <AnchorPane layoutY="90.0" prefHeight="273.0" prefWidth="600.0" styleClass="plutus-content-lighter">
          <children>
             <JFXTextField fx:id="txtFldName" labelFloat="true" layoutX="30.0" layoutY="36.0" prefHeight="30.0" prefWidth="540.0" promptText="Name *" styleClass="txt-fld-dark">
                <validators>

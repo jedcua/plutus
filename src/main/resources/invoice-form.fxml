@@ -8,14 +8,14 @@
 
 <StackPane fx:id="stackPaneRoot" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.jedcua.controller.InvoiceFormController">
    <children>
-      <AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="invoice-form-container" stylesheets="@style.css">
+      <AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="plutus-container" stylesheets="@style.css">
          <children>
              <Label alignment="BOTTOM_LEFT" layoutX="21.0" layoutY="47.0" styleClass="lbl-light" text="Invoice Form">
                  <font>
                      <Font size="30.0" />
                  </font>
              </Label>
-            <AnchorPane layoutY="90.0" prefHeight="450.0" prefWidth="800.0" styleClass="invoice-form">
+            <AnchorPane layoutY="90.0" prefHeight="450.0" prefWidth="800.0" styleClass="plutus-content-lighter">
                <children>
                   <JFXComboBox fx:id="cmbStores" labelFloat="true" layoutX="20.0" layoutY="27.0" prefHeight="26.0" prefWidth="298.0" promptText="Select a store" />
                   <JFXButton fx:id="btnRemoveProduct" disable="true" layoutX="564.0" layoutY="27.0" mnemonicParsing="false" onAction="#removeInvoiceProduct" prefHeight="26.0" prefWidth="98.0" styleClass="btn-danger" text="Remove" />

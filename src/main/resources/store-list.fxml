@@ -8,9 +8,9 @@
 
 <StackPane fx:id="stackPaneRoot" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.jedcua.controller.StoreListController">
    <children>
-      <AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="store-list-container" stylesheets="@style.css">
+      <AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="plutus-container" stylesheets="@style.css">
          <children>
-            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutY="90.0" prefHeight="450.0" prefWidth="800.0" styleClass="store-list">
+            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutY="90.0" prefHeight="450.0" prefWidth="800.0" styleClass="plutus-content">
                <content>
                   <VBox fx:id="vBoxStores" alignment="TOP_CENTER" prefHeight="490.0" prefWidth="780.0" spacing="15.0">
                      <padding>

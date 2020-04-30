@@ -63,62 +63,20 @@
     -fx-text-fill: #fff;
 }
 
-/* For store-list.xml */
-.store-list-container {
-    -fx-background-color: #4f5d75;
-}
-
-.store-list {
-    -fx-background-color: #bfc0c0;
-}
-
 /* For store-item.xml */
 .store-item {
     -fx-background-color: #fff;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 12, 0.2, 4, 4);
 }
 
-/* For store-form.xml */
-.store-form-container {
+.plutus-container {
     -fx-background-color: #4f5d75;
 }
 
-.store-form {
+.plutus-content {
+    -fx-background-color: #bfc0c0;
+}
+
+.plutus-content-lighter {
     -fx-background-color: #fff;
-}
-
-/* For product-list.xml */
-.product-list-container {
-    -fx-background-color: #4f5d75;
-}
-
-.product-list {
-    -fx-background-color: #ffffff;
-}
-
-/* For product-form.xml */
-.product-form-container {
-    -fx-background-color: #4f5d75;
-}
-
-.product-form {
-    -fx-background-color: #fff;
-}
-
-/* For invoice-form.fxml */
-.invoice-form-container {
-    -fx-background-color: #4f5d75;
-}
-
-.invoice-form {
-    -fx-background-color: #ffffff;
-}
-
-/* For invoice-add-product-form.fxml */
-.invoice-add-product-form-container {
-    -fx-background-color: #4f5d75;
-}
-
-.invoice-add-product-form {
-    -fx-background-color: #ffffff;
 }

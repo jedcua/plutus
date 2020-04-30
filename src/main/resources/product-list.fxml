@@ -8,7 +8,7 @@
 
 <StackPane fx:id="stackPaneRoot" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.jedcua.controller.ProductListController">
    <children>
-      <AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="product-list-container" stylesheets="@style.css">
+      <AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="plutus-container" stylesheets="@style.css">
          <children>
             <Label fx:id="lblProducts" alignment="BOTTOM_LEFT" layoutX="21.0" layoutY="47.0" prefHeight="36.0" prefWidth="493.0" styleClass="lbl-light" text="Products">
                <font>
@@ -19,7 +19,7 @@
             <JFXButton fx:id="btnUpdate" disable="true" layoutX="700.0" layoutY="52.0" mnemonicParsing="false" onAction="#updateProduct" prefHeight="26.0" prefWidth="79.0" styleClass="btn-light" stylesheets="@style.css" text="Update" />
             <JFXButton fx:id="btnDelete" disable="true" layoutX="700.0" layoutY="548.0" mnemonicParsing="false" onAction="#deleteProduct" prefHeight="26.0" prefWidth="79.0" styleClass="btn-danger" stylesheets="@style.css" text="Delete" />
             <JFXButton layoutX="21.0" layoutY="548.0" mnemonicParsing="false" onAction="#backToStoreList" prefHeight="26.0" prefWidth="79.0" styleClass="btn-light" stylesheets="@style.css" text="Back" />
-            <AnchorPane layoutY="105.0" prefHeight="420.0" prefWidth="800.0" styleClass="product-list">
+            <AnchorPane layoutY="105.0" prefHeight="420.0" prefWidth="800.0" styleClass="plutus-content-lighter">
                <children>
                   <TableView fx:id="tblProducts" editable="true" layoutX="20.0" layoutY="20.0" prefHeight="380.0" prefWidth="760.0" stylesheets="table-view.css">
                      <placeholder>

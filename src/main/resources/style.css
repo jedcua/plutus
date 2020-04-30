@@ -30,6 +30,10 @@
     -fx-text-fill: #fff;
 }
 
+.jfx-date-picker > .jfx-text-field {
+    -jfx-label-float: true;
+}
+
 .txt-fld-light {
     -jfx-focus-color: #ef8354;
     -jfx-unfocus-color: #fff;

@@ -139,6 +139,17 @@
                     <release>${maven.compiler.release}</release>
                     <jlinkImageName>plutus-${version}</jlinkImageName>
                     <launcher>plutus</launcher>
+                    <options>
+                        <option>--add-exports=javafx.graphics/com.sun.javafx.scene=com.jfoenix</option>
+                        <option>--add-exports=javafx.graphics/com.sun.javafx.scene.text=com.jfoenix</option>
+                        <option>--add-exports=javafx.graphics/com.sun.javafx.geom=com.jfoenix</option>
+                        <option>--add-exports=javafx.graphics/com.sun.javafx.stage=com.jfoenix</option>
+                        <option>--add-exports=javafx.graphics/com.sun.javafx.util=com.jfoenix</option>
+                        <option>--add-exports=javafx.controls/com.sun.javafx.scene.control.behavior=com.jfoenix</option>
+                        <option>--add-exports=javafx.controls/com.sun.javafx.scene.control=com.jfoenix</option>
+                        <option>--add-exports=javafx.base/com.sun.javafx.binding=com.jfoenix</option>
+                        <option>--add-exports=javafx.base/com.sun.javafx.event=com.jfoenix</option>
+                    </options>
                 </configuration>
             </plugin>
 
@@ -231,6 +242,15 @@
                 <configuration>
                     <argLine>
                         @{argLine}
+                        --add-exports=javafx.graphics/com.sun.javafx.scene=com.jfoenix
+                        --add-exports=javafx.graphics/com.sun.javafx.scene.text=com.jfoenix
+                        --add-exports=javafx.graphics/com.sun.javafx.geom=com.jfoenix
+                        --add-exports=javafx.graphics/com.sun.javafx.stage=com.jfoenix
+                        --add-exports=javafx.graphics/com.sun.javafx.util=com.jfoenix
+                        --add-exports=javafx.controls/com.sun.javafx.scene.control.behavior=com.jfoenix
+                        --add-exports=javafx.controls/com.sun.javafx.scene.control=com.jfoenix
+                        --add-exports=javafx.base/com.sun.javafx.binding=com.jfoenix
+                        --add-exports=javafx.base/com.sun.javafx.event=com.jfoenix
                         --add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
                         --add-opens dev.jedcua.plutus/dev.jedcua=ALL-UNNAMED
                         --add-opens dev.jedcua.plutus/dev.jedcua.ui=ALL-UNNAMED

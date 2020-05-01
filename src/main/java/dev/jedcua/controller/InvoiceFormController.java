@@ -91,6 +91,20 @@ public class InvoiceFormController implements Initializable {
     }
 
     @FXML
+    public void openPreview(final ActionEvent event) {
+        this.stageManager.loadModule(
+            Module.INVOICE_PREVIEW,
+            Stage::new,
+            loader -> {
+                final InvoicePreviewController controller = loader.getController();
+                controller.loadPreview(
+                    "<html><body><center><h1>Hello, World!</h1></center></body></html>"
+                );
+            }
+        );
+    }
+
+    @FXML
     public void removeInvoiceProduct() {
         this.tblInvoiceProducts.getItems().remove(
             this.tblInvoiceProducts.getSelectionModel().getSelectedItem()

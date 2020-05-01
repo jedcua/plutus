@@ -4,6 +4,7 @@ module dev.jedcua.plutus {
     requires javafx.base;
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.web;
     requires org.apache.logging.log4j;
     requires org.jdbi.v3.core;
     requires org.jdbi.v3.sqlobject;

@@ -8,7 +8,8 @@ public enum Module {
     PRODUCT_LIST("product-list.fxml"),
     PRODUCT_FORM("product-form.fxml"),
     INVOICE_FORM("invoice-form.fxml"),
-    INVOICE_ADD_PRODUCT_FORM("invoice-add-product-form.fxml");
+    INVOICE_ADD_PRODUCT_FORM("invoice-add-product-form.fxml"),
+    INVOICE_PREVIEW("invoice-preview.fxml");
 
     private final String filename;
 

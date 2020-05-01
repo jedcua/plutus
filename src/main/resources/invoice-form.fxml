@@ -62,7 +62,7 @@
             </AnchorPane>
             <JFXButton layoutX="21.0" layoutY="556.0" mnemonicParsing="false" onAction="#backToWelcome" prefHeight="26.0" prefWidth="98.0" styleClass="btn-light" stylesheets="@style.css" text="Back" />
             <JFXButton layoutX="683.0" layoutY="556.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" styleClass="btn-accent" text="Save" />
-            <JFXButton layoutX="567.0" layoutY="556.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" styleClass="btn-light" text="Generate" />
+            <JFXButton layoutX="567.0" layoutY="556.0" mnemonicParsing="false" onAction="#openPreview" prefHeight="26.0" prefWidth="98.0" styleClass="btn-light" text="Preview" />
          </children>
       </AnchorPane>
    </children>

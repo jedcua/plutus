@@ -120,4 +120,21 @@ public class InvoiceFormControllerTest {
             controller[0].removeInvoiceProduct();
         }));
     }
+
+    @Test
+    public void openPreview(final FxRobot robot) {
+        final InvoiceFormController[] controller = new InvoiceFormController[1];
+        robot.interact(() -> {
+            DependencyManager
+                .getInstance()
+                .fetch(StageManager.class)
+                .loadModule(
+                    Module.INVOICE_FORM,
+                    loader -> controller[0] = loader.getController()
+                );
+        });
+        robot.interact(() -> Assertions.assertDoesNotThrow(() -> {
+            controller[0].openPreview(null);
+        }));
+    }
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+
+<StackPane fx:id="stackPaneRoot" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.jedcua.controller.InvoicePreviewController">
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="plutus-container" stylesheets="@style.css">
+         <children>
+            <Label alignment="BOTTOM_LEFT" layoutX="21.0" layoutY="47.0" styleClass="lbl-light" text="Invoice Preview">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <WebView fx:id="webView" layoutY="90.0" prefHeight="450.0" prefWidth="800.0" />
+            <JFXButton layoutX="603.0" layoutY="556.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-accent" stylesheets="@style.css" text="Print" />
+            <JFXButton fx:id="btnClose" onAction="#close" layoutX="701.0" layoutY="556.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="btn-light" stylesheets="@style.css" text="Close" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

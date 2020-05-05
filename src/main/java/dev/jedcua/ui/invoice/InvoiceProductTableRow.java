@@ -41,4 +41,8 @@ public final class InvoiceProductTableRow {
     public double getSubtotal() {
         return this.getPrice() * this.getQuantity();
     }
+
+    public Product getProduct() {
+        return this.product.get();
+    }
 }

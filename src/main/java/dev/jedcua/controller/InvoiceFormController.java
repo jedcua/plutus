@@ -2,9 +2,12 @@ package dev.jedcua.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
 import dev.jedcua.DependencyManager;
 import dev.jedcua.db.StoreRepository;
+import dev.jedcua.model.Invoice;
 import dev.jedcua.model.Product;
+import dev.jedcua.model.ProductWithQuantity;
 import dev.jedcua.model.Store;
 import dev.jedcua.ui.Module;
 import dev.jedcua.ui.StageManager;
@@ -38,6 +41,9 @@ public class InvoiceFormController implements Initializable {
 
     @FXML
     public JFXButton btnRemoveProduct;
+
+    @FXML
+    public JFXDatePicker dpDeliveryDate;
 
     public List<Store> stores;
     public Store selectedStore;
@@ -98,7 +104,15 @@ public class InvoiceFormController implements Initializable {
             loader -> {
                 final InvoicePreviewController controller = loader.getController();
                 controller.loadPreview(
-                    "<html><body><center><h1>Hello, World!</h1></center></body></html>"
+                    new Invoice(
+                        this.selectedStore,
+                        this.tblInvoiceProducts
+                            .getItems()
+                            .stream()
+                            .map(ProductWithQuantity::fromTableRow)
+                            .collect(Collectors.toList()),
+                        this.dpDeliveryDate.getValue()
+                    )
                 );
             }
         );

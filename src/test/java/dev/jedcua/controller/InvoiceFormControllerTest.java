@@ -1,6 +1,7 @@
 package dev.jedcua.controller;
 
 import dev.jedcua.DependencyManager;
+import dev.jedcua.mock.MockInvoiceTemplateServiceImpl;
 import dev.jedcua.mock.MockProductRepositoryImpl;
 import dev.jedcua.mock.MockStoreRepositoryImpl;
 import dev.jedcua.model.Product;
@@ -31,6 +32,7 @@ public class InvoiceFormControllerTest {
         DependencyManager
             .initialize()
             .register(new StageManager(stage))
+            .register(new MockInvoiceTemplateServiceImpl())
             .register(new MockStoreRepositoryImpl(
                 new Store(1L, "Name", "Address", "Tin"),
                 new Store(2L, "Name", "Address", "Tin"),
@@ -133,6 +135,11 @@ public class InvoiceFormControllerTest {
                     loader -> controller[0] = loader.getController()
                 );
         });
+
+        robot.interact(
+            () -> controller[0].cmbStores.getSelectionModel().select(0)
+        );
+
         robot.interact(() -> Assertions.assertDoesNotThrow(() -> {
             controller[0].openPreview(null);
         }));

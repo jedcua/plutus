@@ -1,6 +1,9 @@
 package dev.jedcua.controller;
 
 import com.jfoenix.controls.JFXButton;
+import dev.jedcua.DependencyManager;
+import dev.jedcua.model.Invoice;
+import dev.jedcua.service.InvoiceTemplateService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,6 +20,20 @@ public final class InvoicePreviewController implements Initializable {
     @FXML
     public JFXButton btnClose;
 
+    private final InvoiceTemplateService invoiceTemplateService;
+
+    public InvoicePreviewController(final InvoiceTemplateService invoiceTemplateService) {
+        this.invoiceTemplateService = invoiceTemplateService;
+    }
+
+    public InvoicePreviewController() {
+        this(
+            DependencyManager
+                .getInstance()
+                .fetch(InvoiceTemplateService.class)
+        );
+    }
+
     @Override
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
     }
@@ -27,8 +44,10 @@ public final class InvoicePreviewController implements Initializable {
         stage.close();
     }
 
-    @FXML
-    public void loadPreview(final String html) {
-        this.webView.getEngine().loadContent(html, "text/html");
+    public void loadPreview(final Invoice invoice) {
+        final String html = this.invoiceTemplateService.render(invoice);
+        this.webView
+            .getEngine()
+            .loadContent(html, "text/html");
     }
 }

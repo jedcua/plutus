@@ -25,6 +25,6 @@ script:
   - mysql -D plutus < src/test/resources/db/test-data.sql
   - mvn verify
   - mvn compile
-#  - mvn javafx:jlink
+  - mvn package
 after_success:
   - mvn jacoco:report coveralls:report

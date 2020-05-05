@@ -1,6 +1,7 @@
 package dev.jedcua.controller;
 
 import dev.jedcua.DependencyManager;
+import dev.jedcua.mock.MockInvoiceTemplateServiceImpl;
 import dev.jedcua.ui.Module;
 import dev.jedcua.ui.StageManager;
 import javafx.stage.Stage;
@@ -25,7 +26,8 @@ public class InvoicePreviewControllerTest {
     public void beforeEach() {
         DependencyManager
             .initialize()
-            .register(new StageManager(stage));
+            .register(new StageManager(stage))
+            .register(new MockInvoiceTemplateServiceImpl());
     }
     @Test
     public void close(final FxRobot robot) {

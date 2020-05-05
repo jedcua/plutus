@@ -5,6 +5,7 @@ import dev.jedcua.config.impl.EnvironmentConfiguration;
 import dev.jedcua.db.JdbiFactory;
 import dev.jedcua.db.impl.ProductRepositoryImpl;
 import dev.jedcua.db.impl.StoreRepositoryImpl;
+import dev.jedcua.service.impl.InvoiceTemplateServiceImpl;
 import dev.jedcua.ui.Module;
 import dev.jedcua.ui.StageManager;
 import javafx.application.Application;
@@ -37,6 +38,7 @@ public final class Main extends Application {
             DependencyManager
                 .initialize()
                 .register(new StageManager(stage))
+                .register(new InvoiceTemplateServiceImpl())
                 .register(new StoreRepositoryImpl(jdbi))
                 .register(new ProductRepositoryImpl(jdbi));
 

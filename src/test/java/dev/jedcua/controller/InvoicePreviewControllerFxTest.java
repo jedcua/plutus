@@ -1,6 +1,7 @@
 package dev.jedcua.controller;
 
 import dev.jedcua.DependencyManager;
+import dev.jedcua.FxTestUtils;
 import dev.jedcua.mock.MockInvoiceTemplateServiceImpl;
 import dev.jedcua.ui.Module;
 import dev.jedcua.ui.StageManager;
@@ -14,7 +15,7 @@ import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 
 @ExtendWith(ApplicationExtension.class)
-public class InvoicePreviewControllerTest {
+public class InvoicePreviewControllerFxTest {
     private Stage stage;
 
     @Start
@@ -31,18 +32,11 @@ public class InvoicePreviewControllerTest {
     }
     @Test
     public void close(final FxRobot robot) {
-        final InvoicePreviewController[] controller = new InvoicePreviewController[1];
         robot.interact(() -> {
-            DependencyManager
-                .getInstance()
-                .fetch(StageManager.class)
-                .loadModule(
-                    Module.INVOICE_PREVIEW,
-                    loader -> controller[0] = loader.getController()
-                );
+            final InvoicePreviewController controller = FxTestUtils.loadModuleReturnController(
+                Module.INVOICE_PREVIEW, InvoicePreviewController.class
+            );
+            Assertions.assertDoesNotThrow(() -> controller.close(null));
         });
-        robot.interact(() -> Assertions.assertDoesNotThrow(() -> {
-            controller[0].close(null);
-        }));
     }
 }

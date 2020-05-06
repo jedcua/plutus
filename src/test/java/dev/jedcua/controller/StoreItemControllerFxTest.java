@@ -60,7 +60,7 @@ public class StoreItemControllerFxTest {
                 Module.STORE_ITEM, StoreItemController.class
             );
             controller.loadData(new Store(1L, "Name", "Address", null));
-            Assertions.assertDoesNotThrow(() -> controller.update(null));
+            Assertions.assertDoesNotThrow(() -> controller.confirmDelete(null));
         });
     }
 

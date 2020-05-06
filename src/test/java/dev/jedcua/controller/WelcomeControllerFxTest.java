@@ -1,8 +1,10 @@
 package dev.jedcua.controller;
 
 import dev.jedcua.DependencyManager;
+import dev.jedcua.FxTestUtils;
 import dev.jedcua.mock.MockStoreRepositoryImpl;
 import dev.jedcua.model.Store;
+import dev.jedcua.ui.Module;
 import dev.jedcua.ui.StageManager;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.AfterEach;
@@ -15,7 +17,7 @@ import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 
 @ExtendWith(ApplicationExtension.class)
-public class WelcomeControllerTest {
+public class WelcomeControllerFxTest {
     private Stage stage;
 
     @Start
@@ -44,15 +46,21 @@ public class WelcomeControllerTest {
 
     @Test
     public void openStores(final FxRobot robot) {
-        robot.interact(() -> Assertions.assertDoesNotThrow(() ->
-            new WelcomeController().openStores(null))
-        );
+        robot.interact(() -> {
+            final WelcomeController controller = FxTestUtils.loadModuleReturnController(
+                Module.WELCOME, WelcomeController.class
+            );
+            Assertions.assertDoesNotThrow(() -> controller.openStores(null));
+        });
     }
 
     @Test
     public void openInvoiceForm(final FxRobot robot) {
-        robot.interact(() -> Assertions.assertDoesNotThrow(() ->
-            new WelcomeController().openInvoiceForm(null))
-        );
+        robot.interact(() -> {
+            final WelcomeController controller = FxTestUtils.loadModuleReturnController(
+                Module.WELCOME, WelcomeController.class
+            );
+            Assertions.assertDoesNotThrow(() -> controller.openInvoiceForm(null));
+        });
     }
 }

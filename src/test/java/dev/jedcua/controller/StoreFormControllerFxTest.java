@@ -1,6 +1,7 @@
 package dev.jedcua.controller;
 
 import dev.jedcua.DependencyManager;
+import dev.jedcua.FxTestUtils;
 import dev.jedcua.db.StoreRepository;
 import dev.jedcua.mock.MockStoreListController;
 import dev.jedcua.mock.MockStoreRepositoryImpl;
@@ -10,6 +11,7 @@ import dev.jedcua.ui.StageManager;
 import javafx.stage.Stage;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,7 +25,7 @@ import static org.hamcrest.Matchers.*;
 import static org.hamcrest.beans.HasPropertyWithValue.hasProperty;
 
 @ExtendWith(ApplicationExtension.class)
-public class StoreFormControllerTest {
+public class StoreFormControllerFxTest {
     private Stage stage;
 
     @Start
@@ -47,23 +49,14 @@ public class StoreFormControllerTest {
 
     @Test
     public void save(final FxRobot robot) {
-        final StoreFormController[] controller = new StoreFormController[1];
-
         robot.interact(() -> {
-            DependencyManager
-                .getInstance()
-                .fetch(StageManager.class)
-                .loadModule(
-                    Module.STORE_FORM,
-                    (loader) -> controller[0] = loader.getController()
-                );
-        });
-
-        robot.interact(() -> {
-            controller[0].txtFldName.setText("StoreName");
-            controller[0].txtFldAddress.setText("StoreAddress");
-            controller[0].txtFldTin.setText("StoreTin");
-            controller[0].save(null);
+            final StoreFormController controller = FxTestUtils.loadModuleReturnController(
+                Module.STORE_FORM, StoreFormController.class
+            );
+            controller.txtFldName.setText("StoreName");
+            controller.txtFldAddress.setText("StoreAddress");
+            controller.txtFldTin.setText("StoreTin");
+            Assertions.assertDoesNotThrow(() -> controller.save(null));
         });
 
         final List<Store> stores = DependencyManager

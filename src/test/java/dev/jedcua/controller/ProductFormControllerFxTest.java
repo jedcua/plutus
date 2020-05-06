@@ -1,6 +1,7 @@
 package dev.jedcua.controller;
 
 import dev.jedcua.DependencyManager;
+import dev.jedcua.FxTestUtils;
 import dev.jedcua.db.ProductRepository;
 import dev.jedcua.mock.MockProductListController;
 import dev.jedcua.mock.MockProductRepositoryImpl;
@@ -11,6 +12,7 @@ import dev.jedcua.ui.StageManager;
 import javafx.stage.Stage;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,7 +26,7 @@ import static org.hamcrest.Matchers.*;
 import static org.hamcrest.beans.HasPropertyWithValue.hasProperty;
 
 @ExtendWith(ApplicationExtension.class)
-public class ProductFormControllerTest {
+public class ProductFormControllerFxTest {
     private Stage stage;
 
     @Start
@@ -50,27 +52,17 @@ public class ProductFormControllerTest {
     @Test
     public void save(final FxRobot robot) {
         final Store store = new Store(1L, null, null, null);
-        final ProductFormController[] controller = new ProductFormController[1];
 
         robot.interact(() -> {
-            DependencyManager
-                .getInstance()
-                .fetch(StageManager.class)
-                .loadModule(
-                    Module.PRODUCT_FORM,
-                    (loader) -> {
-                        controller[0] = loader.getController();
-                        controller[0].loadData(store, Product.empty());
-                    }
-                );
-        });
-
-        robot.interact(() -> {
-            controller[0].txtFldName.setText("ProductName");
-            controller[0].txtFldBarcode.setText("ProductBarcode");
-            controller[0].txtFldPrice.setText("12.34");
-            controller[0].txtFldUnit.setText("ProductUnit");
-            controller[0].save(null);
+            final ProductFormController controller = FxTestUtils.loadModuleReturnController(
+                Module.PRODUCT_FORM, ProductFormController.class
+            );
+            controller.loadData(store, Product.empty());
+            controller.txtFldName.setText("ProductName");
+            controller.txtFldBarcode.setText("ProductBarcode");
+            controller.txtFldPrice.setText("12.34");
+            controller.txtFldUnit.setText("ProductUnit");
+            Assertions.assertDoesNotThrow(() -> controller.save(null));
         });
 
         final List<Product> stores = DependencyManager
@@ -89,5 +81,4 @@ public class ProductFormControllerTest {
             )
         );
     }
-
 }

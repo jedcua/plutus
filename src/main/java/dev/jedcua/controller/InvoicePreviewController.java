@@ -45,7 +45,7 @@ public final class InvoicePreviewController implements Initializable {
     }
 
     public void loadPreview(final Invoice invoice) {
-        final String html = this.invoiceTemplateService.render(invoice);
+        final String html = this.invoiceTemplateService.render(1L, invoice);
         this.webView
             .getEngine()
             .loadContent(html, "text/html");

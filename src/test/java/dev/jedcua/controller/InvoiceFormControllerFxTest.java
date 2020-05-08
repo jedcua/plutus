@@ -75,7 +75,7 @@ public class InvoiceFormControllerFxTest {
             final InvoiceFormController controller = FxTestUtils.loadModuleReturnController(
                 Module.INVOICE_FORM, InvoiceFormController.class
             );
-            final Product product = new Product(1L, "Name", null, 12.20, "pcs");
+            final Product product = new Product(1L, "Name", "Barcode", 12.20, "pcs");
             Assertions.assertDoesNotThrow(
                 () -> controller.addInvoiceProduct( product, 1)
             );
@@ -101,7 +101,9 @@ public class InvoiceFormControllerFxTest {
             final InvoiceFormController controller = FxTestUtils.loadModuleReturnController(
                 Module.INVOICE_FORM, InvoiceFormController.class
             );
+            final Product product = new Product(1L, "Name", "Barcode", 12.20, "pcs");
             controller.cmbStores.getSelectionModel().select(0);
+            controller.addInvoiceProduct( product, 1);
             Assertions.assertDoesNotThrow(
                 () -> controller.openPreview(null)
             );

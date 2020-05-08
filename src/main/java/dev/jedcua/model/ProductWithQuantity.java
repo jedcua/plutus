@@ -35,6 +35,10 @@ public final class ProductWithQuantity {
         return this.quantity;
     }
 
+    public Double getSubtotal() {
+        return this.getPrice() * this.getQuantity();
+    }
+
     public static ProductWithQuantity fromTableRow(final InvoiceProductTableRow row) {
         return new ProductWithQuantity(
             row.getProduct(),

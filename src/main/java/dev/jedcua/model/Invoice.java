@@ -29,4 +29,12 @@ public final class Invoice {
     public LocalDate getDeliveryDate() {
         return deliveryDate;
     }
+
+    public double getTotal() {
+        return this.products
+            .stream()
+            .map(ProductWithQuantity::getSubtotal)
+            .reduce(Double::sum)
+            .orElse(0.0);
+    }
 }

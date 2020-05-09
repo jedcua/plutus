@@ -1,6 +1,7 @@
 package dev.jedcua.ui.product;
 
 import dev.jedcua.model.Product;
+import dev.jedcua.utils.FormatUtils;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -50,6 +51,10 @@ public final class ProductTableRow {
 
     public double getPrice() {
         return price.get();
+    }
+
+    public String getPriceStr() {
+        return FormatUtils.formatAmount(this.getPrice());
     }
 
     public String getUnit() {

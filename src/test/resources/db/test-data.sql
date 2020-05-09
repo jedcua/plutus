@@ -43,7 +43,7 @@ INSERT INTO invoice_template(id, name, content) VALUES (1, 'Test Template',
 <div class="h-spacer bold line-spacing">
     <div>
         <span class="inline-block" style="width: 14cm;">$invoice.store.name</span>
-        <span>$Template.formatDate($invoice.deliveryDate, "MMMM dd, yyyy")</span>
+        <span>$Format.formatDate($invoice.deliveryDate, "MMMM dd, yyyy")</span>
     </div>
     <div>$invoice.store.address</div>
     <div>
@@ -58,30 +58,30 @@ INSERT INTO invoice_template(id, name, content) VALUES (1, 'Test Template',
         <span class="inline-block" style="text-align: right; width: 1cm;">$product.quantity</span>
         <span class="inline-block product-padding" style="width: 1cm;">$product.unit</span>
         <span class="inline-block product-padding" style="width: 11.7cm;">$product.name</span>
-        <span class="inline-block product-padding" style="text-align: right; width: 1.5cm;">$Template.formatAmount($product.price)</span>
-        <span class="inline-block product-padding" style="text-align: right; width: 3cm;">$Template.formatAmount($product.subtotal)</span>
+        <span class="inline-block product-padding" style="text-align: right; width: 1.5cm;">$Format.formatAmount($product.price)</span>
+        <span class="inline-block product-padding" style="text-align: right; width: 3cm;">$Format.formatAmount($product.subtotal)</span>
     </div>
     #end
     <div style="margin-bottom: 2.8cm;"></div> <div class="bold" style="padding-left: 11.5cm">
         <div>
             <span class="inline-block" style="width: 3cm;">Total Sales</span>
-            <span class="inline-block" style="width: 4.85cm; text-align: right">$Template.formatAmount($invoice.total)</span>
+            <span class="inline-block" style="width: 4.85cm; text-align: right">$Format.formatAmount($invoice.total)</span>
         </div>
         <div>
             <span class="inline-block" style="width: 3cm;">Less Discount 3%</span>
-            <span class="inline-block" style="width: 4.85cm; text-align: right">$Template.formatAmount($lessDiscount)</span>
+            <span class="inline-block" style="width: 4.85cm; text-align: right">$Format.formatAmount($lessDiscount)</span>
         </div>
         <div>
             <span class="inline-block" style="width: 3cm;">Vatable</span>
-            <span class="inline-block" style="width: 4.85cm; text-align: right">$Template.formatAmount($vatable)</span>
+            <span class="inline-block" style="width: 4.85cm; text-align: right">$Format.formatAmount($vatable)</span>
         </div>
         <div>
             <span class="inline-block" style="width: 3cm;">Vat Amount</span>
-            <span class="inline-block" style="width: 4.85cm; text-align: right">$Template.formatAmount($vatAmount)</span>
+            <span class="inline-block" style="width: 4.85cm; text-align: right">$Format.formatAmount($vatAmount)</span>
         </div>
         <div>
             <span class="inline-block" style="width: 3cm;">Net</span>
-            <span class="inline-block" style="width: 4.85cm; text-align: right">$Template.formatAmount($netAmount)</span>
+            <span class="inline-block" style="width: 4.85cm; text-align: right">$Format.formatAmount($netAmount)</span>
         </div>
     </div>
 </div>

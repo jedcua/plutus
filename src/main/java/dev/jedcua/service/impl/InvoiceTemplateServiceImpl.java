@@ -4,7 +4,7 @@ import dev.jedcua.db.InvoiceTemplateRepository;
 import dev.jedcua.model.Invoice;
 import dev.jedcua.model.InvoiceTemplate;
 import dev.jedcua.service.InvoiceTemplateService;
-import dev.jedcua.utils.TemplateUtils;
+import dev.jedcua.utils.FormatUtils;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 
@@ -23,7 +23,7 @@ public final class InvoiceTemplateServiceImpl implements InvoiceTemplateService 
 
         final VelocityContext context = new VelocityContext();
         context.put("invoice", invoice);
-        context.put("Template", TemplateUtils.class);
+        context.put("Format", FormatUtils.class);
 
         final StringWriter stringWriter = new StringWriter();
         Velocity.evaluate(context, stringWriter, invoiceTemplate.getName(), invoiceTemplate.getContent());

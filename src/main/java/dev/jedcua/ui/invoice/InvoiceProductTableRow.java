@@ -1,6 +1,7 @@
 package dev.jedcua.ui.invoice;
 
 import dev.jedcua.model.Product;
+import dev.jedcua.utils.FormatUtils;
 import javafx.beans.property.*;
 
 public final class InvoiceProductTableRow {
@@ -30,6 +31,10 @@ public final class InvoiceProductTableRow {
         return this.product.get().getPrice();
     }
 
+    public String getPriceStr() {
+        return FormatUtils.formatAmount(this.getPrice());
+    }
+
     public String getUnit() {
         return this.product.get().getUnit();
     }
@@ -40,6 +45,10 @@ public final class InvoiceProductTableRow {
 
     public double getSubtotal() {
         return this.getPrice() * this.getQuantity();
+    }
+
+    public String getSubtotalStr() {
+        return FormatUtils.formatAmount(this.getSubtotal());
     }
 
     public Product getProduct() {

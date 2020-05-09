@@ -24,7 +24,7 @@
                 </TableColumn>
                 <TableColumn prefWidth="100.0" resizable="false" styleClass="col-price" text="Price">
                     <cellValueFactory>
-                        <PropertyValueFactory property="price" />
+                        <PropertyValueFactory property="priceStr" />
                     </cellValueFactory>
                 </TableColumn>
                 <TableColumn prefWidth="70.0" resizable="false" text="Unit">

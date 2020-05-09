@@ -12,6 +12,8 @@ import dev.jedcua.model.Store;
 import dev.jedcua.ui.Module;
 import dev.jedcua.ui.StageManager;
 import dev.jedcua.ui.invoice.InvoiceProductTableRow;
+import dev.jedcua.utils.FormatUtils;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,6 +27,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @SuppressWarnings("checkstyle:designforextension")
 public class InvoiceFormController implements Initializable {
@@ -43,7 +46,16 @@ public class InvoiceFormController implements Initializable {
     public JFXButton btnRemoveProduct;
 
     @FXML
+    public JFXButton btnSave;
+
+    @FXML
+    public JFXButton btnPreview;
+
+    @FXML
     public JFXDatePicker dpDeliveryDate;
+
+    @FXML
+    public Label lblTotal;
 
     public List<Store> stores;
     public Store selectedStore;
@@ -81,6 +93,7 @@ public class InvoiceFormController implements Initializable {
             (obsrvbl, oldIdx, newIdx) -> {
                 this.selectedStore = this.stores.get(newIdx.intValue());
                 this.btnAddProduct.setDisable(false);
+                this.validate();
                 LOGGER.info("Store select | Index: {} | Name: {}", newIdx, this.selectedStore.getName());
             }
         );
@@ -89,6 +102,12 @@ public class InvoiceFormController implements Initializable {
                 this.btnRemoveProduct.setDisable(newValue.intValue() < 0);
             }
         );
+        this.tblInvoiceProducts.getItems().addListener((ListChangeListener<InvoiceProductTableRow>) change -> {
+            this.updateTotal();
+        });
+        this.dpDeliveryDate.valueProperty().addListener((obsrvbl, oldDate, newDate) -> {
+            this.validate();
+        });
     }
 
     @FXML
@@ -141,5 +160,27 @@ public class InvoiceFormController implements Initializable {
         this.tblInvoiceProducts.getItems().add(
             new InvoiceProductTableRow(product, quantity)
         );
+        this.validate();
+    }
+
+    public void validate() {
+        final boolean valid = Stream.of(
+            this.cmbStores.validate(),
+            this.dpDeliveryDate.validate(),
+            !this.tblInvoiceProducts.getItems().isEmpty()
+        ).allMatch(b -> b);
+
+        this.btnSave.setDisable(!valid);
+        this.btnPreview.setDisable(!valid);
+    }
+
+    public void updateTotal() {
+        final double sum = this.tblInvoiceProducts
+            .getItems()
+            .stream()
+            .map(InvoiceProductTableRow::getSubtotal)
+            .reduce(Double::sum)
+            .orElse(0.00);
+        this.lblTotal.setText(FormatUtils.formatAmount(sum));
     }
 }
